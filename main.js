@@ -175,7 +175,8 @@ document.addEventListener("DOMContentLoaded", function () {
             containerResultados.style.display = "flex";
             history.replaceState(null, "", "/");
             textoPlaceholder.textContent = texto;
-            renderCodes(data.codigos || data.codes || []);
+            // Cambio aquí: acepta también candidatos_gpt
+            renderCodes(data.codigos || data.codes || data.candidatos_gpt || []);
             currentsessionId = data.sessionId || null;
         } catch (err) {
             hideSpinner();
