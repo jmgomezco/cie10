@@ -111,9 +111,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 toast.remove();
                 // Redirige y limpia el historial
                 history.replaceState(null, "", "/");
-                window.location.replace("https://nhug.ai");
+                window.close();
             }, 500);
-        }, 1500); // 1,5 segundos visible
+        }, 1200); // 1,5 segundos visible
     }
 
     async function seleccionarCodigo(code) {
