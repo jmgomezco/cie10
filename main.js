@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
         toast.style.top = '50%';
         toast.style.left = '50%';
         toast.style.transform = 'translate(-50%, -50%)';
-        toast.style.background = '#229954';
+        toast.style.background = '#6495ED';
         toast.style.color = '#fff';
         toast.style.padding = '1.5em 2.5em';
         toast.style.borderRadius = '10px';
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 history.replaceState(null, "", "/");
                 window.close();
             }, 500);
-        }, 1200); // 1,5 segundos visible
+        }, 1500); // 1,5 segundos visible
     }
 
     async function seleccionarCodigo(code) {
