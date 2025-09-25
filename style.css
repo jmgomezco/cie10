@@ -105,7 +105,7 @@ h2 {
     width: 100%; font-family: Verdana, sans-serif; font-size: clamp(16px, 4vw, 20px);
     color: black; text-align: justify; margin-bottom: clamp(5px, 1vh, 10px); line-height: 1.4;
 }
-.texto-placeholder { color: #1E5AA8; font-weight: normal; }
+.texto-placeholder { color: #6495ED; font-weight: normal; }
 .codes-list {
     width: 100%; display: flex; flex-direction: column; gap: clamp(4px, 0.8vh, 8px);
     margin-top: clamp(5px, 1vh, 10px);
@@ -113,40 +113,40 @@ h2 {
 .code-item {
     width: 100%; display: flex; justify-content: space-between; align-items: center;
     padding: clamp(6px, 1.2vh, 10px); border: 2px solid #6495ED; border-radius: 10px;
-    background-color: #f8f9ff; transition: all 0.3s ease;
+    background-color: #; transition: all 0.3s ease;
 }
 .code-item:hover {
-    background-color: #e8f0ff; transform: translateY(-1px);
+    background-color: #2d436a; transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(100, 149, 237, 0.2);
 }
 .code-info { flex: 1; display: flex; flex-direction: column; gap: 2px; }
 .code-number {
     font-family: Verdana, sans-serif; font-size: clamp(14px, 3vw, 16px);
-    font-weight: bold; color: #1E5AA8;
+    font-weight: bold; color: #f5f5f5;
 }
 .code-description {
     font-family: Verdana, sans-serif; font-size: clamp(12px, 2.5vw, 15px);
-    color: #333; line-height: 1.3; font-weight: 400;
+    color: #f5f5f5; line-height: 1.3; font-weight: 400;
 }
 .select-button {
-    background-color: #6495ED; color: white; border: none;
+    background-color: #1E5AA8; color: white; border: none;
     padding: clamp(6px, 1.2vh, 10px) clamp(12px, 2.5vw, 16px); border-radius: 8px;
     font-family: Verdana, sans-serif; font-size: clamp(11px, 2.2vw, 13px);
     font-weight: bold; cursor: pointer; transition: all 0.3s ease; white-space: nowrap;
 }
-.select-button:hover { background-color: #5a86d4; transform: scale(1.05); }
+.select-button:hover { background-color: #2d436a; transform: scale(1.05); }
 .action-buttons {
     width: 100%; display: flex; justify-content: center; margin-top: clamp(20px, 4vh, 30px);
 }
 .new-search-button {
-    background-color: #28b761; color: white; border: none;
+    background-color: #2d436a; color: white; border: none;
     padding: clamp(12px, 2.5vh, 18px) clamp(24px, 5vw, 32px); border-radius: 10px;
     font-family: Verdana, sans-serif; font-size: clamp(15px, 3.2vw, 18px);
     font-weight: bold; cursor: pointer; transition: all 0.3s ease; text-decoration: none;
     display: inline-block;
 }
 .new-search-button:hover {
-    background-color: #229954; transform: translateY(-2px);
+    background-color: #1E5AA8; transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(40, 183, 97, 0.3);
 }
 .no-codes-message {
