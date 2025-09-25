@@ -14,26 +14,27 @@ body {
 
 h2 {
     font-family: 'Orbitron', Arial, sans-serif;
-    font-size: clamp(18px, 4vw, 28px);          /* Tamaño de fuente reducido */
-    font-weight: 700;
+    font-size: clamp(18px, 4vw, 28px);      /* Tamaño de fuente amigable */
+    font-weight: 900;
     font-style: normal;
     color: #fff;
     background: #000;
-    margin: 0 0 clamp(28px, 5vh, 40px) 0;       /* margen inferior menor */
-    padding: 18px 40px;                         /* padding agradable, centrado vertical y horizontal */
-    line-height: 1.3;                           /* mejor legibilidad */
+    margin: 0 0 clamp(28px, 5vh, 40px) 0;   /* Sin margen izquierdo, solo margen abajo */
+    padding: 16px 30px;                     /* Ajusta los valores si quieres el recuadro más pequeño */
+    line-height: 1.3;
     letter-spacing: 1.2px;
     text-shadow: none;
-    text-align: center;                         /* centrado horizontal en el recuadro */
+    text-align: center;                     /* Centra el texto en el recuadro */
     border-radius: 0;
     border: none;
-    width: fit-content;                         /* solo lo necesario para el título */
-    min-width: 200px;                           /* opcional, puedes ajustar o quitar */
+    width: fit-content;                     /* Solo lo necesario para el título */
+    min-width: 200px;                       /* Opcional, puedes quitarlo */
     box-sizing: border-box;
-    display: flex;                              /* centrado vertical */
-    align-items: center;                        /* centrado vertical */
-    justify-content: center;                    /* centrado horizontal */
+    display: flex;
+    align-items: center;                    /* Centra verticalmente */
+    justify-content: center;                /* Centra horizontalmente */
 }
+
 
 /* Pantalla inicial */
 .container-inicial {
