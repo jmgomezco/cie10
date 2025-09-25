@@ -113,7 +113,7 @@ h2 {
     background-color: #; transition: all 0.3s ease;
 }
 .code-item:hover {
-    background-color: #6495ED; transform: translateY(-1px);
+    background-color: #bceeff; transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(100, 149, 237, 0.2);
 }
 .code-info { flex: 1; display: flex; flex-direction: column; gap: 2px; }
