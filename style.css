@@ -56,7 +56,7 @@ h2 {
 
 /* Pantalla resultados */
 
-.container-resultados {
+container-resultados {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -64,14 +64,20 @@ h2 {
     width: 100%;
     max-width: 25cm;
     min-height: 100vh;
-    margin: 2cm auto 0;    /* Se reduce el margen superior para acercar el contenido al título */
+    margin: 2cm auto 0;
     padding: 0px;
     background-color: #ffffff;
 }
 
 .container-resultados > h2 {
-    align-self: flex-start;     /* ¡ESTA LÍNEA PEGA EL H2 A LA IZQUIERDA DEL CONTENEDOR! */
-    margin-top: -1cm;   
+    align-self: flex-start;
+    margin-top: -1cm;                /* Título a 1cm del borde superior de pantalla */
+    margin-bottom: 0;                /* Sin margen inferior */
+}
+
+/* Aplica 1cm de separación SOLO al primer elemento después de h2 */
+.container-resultados > h2 + * {
+    margin-top: 1cm !important;
 }
 
 .instrucciones {
