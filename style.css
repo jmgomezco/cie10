@@ -85,7 +85,7 @@ h2 {
 .message-paragraph {
     width: 100%;
     font-family: Arial, serif;
-    font-size: clamp(12px, 3vw, 16px);
+    font-size: clamp(16px, 6vw, 20px);
     color: black;
     text-align: justify;
     margin-bottom: clamp(5px, 1vh, 10px);
@@ -143,44 +143,3 @@ h2 {
     font-family: Verdana, sans-serif; font-size: clamp(15px, 3.2vw, 17px); color: #666;
     margin-bottom: clamp(15px, 3vh, 20px);
 }
-
-/* Responsive rules (puedes agregar más si necesitas) */
-@media (max-width: 1023px) {
-    .container-inicial, .container-resultados {
-        margin-top: clamp(1.5cm, 8vh, 4cm);
-        padding: 0 clamp(10px, 4vw, 20px);
-    }
-    h2 {
-        font-size: clamp(24px, 6vw, 36px);
-        margin-bottom: clamp(12px, 4vh, 20px);
-    }
-    /* Reduce distancia debajo del título SOLO en resultados modo móvil */
-    .container-resultados h2 {
-        margin-bottom: clamp(10px, 2vh, 15px);
-    }
-    .instrucciones {
-    width: 100%;
-    font-family: Arial, serif;
-    font-size: clamp(12px, 3vw, 16px);
-    color: black;
-    text-align: justify;
-    margin-bottom: clamp(5px, 1vh, 10px);
-    line-height: 1.4;
-    }    
-    .caja-texto {
-        font-size: clamp(16px, 4vw, 20px);
-        padding: clamp(8px, 2vw, 12px);
-        border-radius: clamp(14px, 5vw, 18px);
-    }
-    .spinner {
-        width: clamp(40px, 8vw, 60px);
-        height: clamp(40px, 8vw, 60px);
-        border-width: clamp(3px, 1vw, 4px);
-        margin: clamp(12px, 3vh, 20px) auto;
-    }
-    .error-message {
-        font-size: clamp(14px, 3vw, 18px);
-        margin-top: clamp(10px, 2.5vh, 15px);
-    }
-}
-
