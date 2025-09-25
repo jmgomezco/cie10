@@ -64,10 +64,15 @@ container-resultados {
     width: 100%;
     max-width: 25cm;
     min-height: 100vh;
-    margin: 1cm auto 0;
+    margin: 2cm auto 0;
     padding: 0px;
     background-color: #ffffff;
 }
+
+container-inicial > h2 {
+    align-self: flex-start;     /* ¡ESTA LÍNEA PEGA EL H2 A LA IZQUIERDA DEL CONTENEDOR! */
+    margin-top: -1cm;           /* Hace que SOLO el h2 suba, el resto no se mueve */
+    
 
 
 .instrucciones {
