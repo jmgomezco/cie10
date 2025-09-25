@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
 * { box-sizing: border-box; }
 
 body {
@@ -12,51 +12,21 @@ body {
     overflow-x: hidden;
 }
 
+/* Pantalla inicial */
 .container-inicial {
     display: flex;
     flex-direction: column;
-    align-items: center;        /* Centra los hijos, excepto h2 */
+    align-items: center;
     justify-content: flex-start;
     width: 100%;
     max-width: 25cm;
     min-height: 100vh;
-    margin: 2cm auto 0;         /* Mantiene el margen superior y centrado horizontal general */
-}
-
-.container-inicial > h2 {
-    align-self: flex-start;     /* ¡ESTA LÍNEA PEGA EL H2 A LA IZQUIERDA DEL CONTENEDOR! */
-    margin-top: -1cm;           /* Hace que SOLO el h2 suba, el resto no se mueve */
-    /* el resto de estilos van en el selector h2 como abajo */
-}
-
-h2 {
-    font-family: 'Orbitron', Arial, sans-serif;
-    font-size: clamp(12px, 6vw, 32px);      
-    font-weight: 900;
-    font-style: normal;
-    color: #fff;
-    margin-left: 0;
-    background: #000;
-    margin: 0 0 clamp(70px, 12vh, 115px) 0;  /* <--- cambio aquí */
-    padding: 14px 25px;
-    line-height: 1.3;
-    letter-spacing: 1.2px;
-    text-shadow: none;
-    text-align: center;
-    border-radius: 0;
-    border: none;
-    width: fit-content;
-    min-width: 200px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* align-self: flex-start;  <-- Mejor ponerlo en el selector de arriba para evitar afectar otros h2 fuera de .container-inicial */
+    margin: 2cm auto 0; /* Mantiene el margen original para la pantalla inicial */
+   
 }
 
 /* Pantalla resultados */
-
-container-resultados {
+.container-resultados {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -64,27 +34,36 @@ container-resultados {
     width: 100%;
     max-width: 25cm;
     min-height: 100vh;
-    margin: 2cm auto 0;
+    margin: 0.5cm auto 0;    /* Se reduce el margen superior para acercar el contenido al título */
     padding: 0px;
     background-color: #ffffff;
 }
 
-container-inicial > h2 {
-    align-self: flex-start;     /* ¡ESTA LÍNEA PEGA EL H2 A LA IZQUIERDA DEL CONTENEDOR! */
-    margin-top: -1cm;           /* Hace que SOLO el h2 suba, el resto no se mueve */
-    
-
-
-.instrucciones {
-    width: 100%;
-    font-family: Arial, serif;
-    font-size: clamp(13px, 2.5vw, 17px); /* Fuente más pequeña */
-    color: #2d436a;                      /* Azul oscuro */
-    text-align: justify;                 /* Justificación horizontal */
-    margin-bottom: clamp(15px, 3vh, 0.5cm);
+h2 {
+    font-family: "Bubblegum Sans", cursive, sans-serif;
+    font-size: clamp(24px, 6vw, 36px);
+    font-weight: 400;
+    font-style: italic;
+    margin: 0 0 clamp(40px, 8vh, 80px) 0;
+    padding: 0;
+    line-height: 0.8;
+    letter-spacing: -1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
     align-self: flex-start;
 }
 
+/* Reduce distancia debajo del título SOLAMENTE en pantalla de resultados */
+.container-resultados h2 {
+    margin-bottom: clamp(15px, 3vh, 24px); /* Mucho menor separación que el original */
+}
+
+.nhug { color: #1E5AA8; }
+.ai { color: #6495ED; }
+.instrucciones {
+    width: 100%; font-size: clamp(16px, 4vw, 20px); color: black; text-align: left;
+    margin-bottom: clamp(15px, 3vh, 0.5cm); align-self: flex-start;
+}
 .caja-texto {
     width: 100%; padding: 12px; border: 3px solid #6495ED; border-radius: 15px;
     font-family: Verdana, sans-serif; font-size: clamp(16px, 4vw, 20px); text-align: left;
@@ -156,4 +135,39 @@ container-inicial > h2 {
 .no-codes-message p {
     font-family: Verdana, sans-serif; font-size: clamp(15px, 3.2vw, 17px); color: #666;
     margin-bottom: clamp(15px, 3vh, 20px);
+}
+
+/* Responsive rules (puedes agregar más si necesitas) */
+@media (max-width: 1023px) {
+    .container-inicial, .container-resultados {
+        margin-top: clamp(1.5cm, 8vh, 4cm);
+        padding: 0 clamp(10px, 4vw, 20px);
+    }
+    h2 {
+        font-size: clamp(24px, 6vw, 36px);
+        margin-bottom: clamp(12px, 4vh, 20px);
+    }
+    /* Reduce distancia debajo del título SOLO en resultados modo móvil */
+    .container-resultados h2 {
+        margin-bottom: clamp(10px, 2vh, 15px);
+    }
+    .instrucciones {
+        font-size: clamp(16px, 4vw, 20px);
+        margin-bottom: clamp(0.3cm, 3vh, 0.5cm);
+    }
+    .caja-texto {
+        font-size: clamp(16px, 4vw, 20px);
+        padding: clamp(8px, 2vw, 12px);
+        border-radius: clamp(14px, 5vw, 18px);
+    }
+    .spinner {
+        width: clamp(40px, 8vw, 60px);
+        height: clamp(40px, 8vw, 60px);
+        border-width: clamp(3px, 1vw, 4px);
+        margin: clamp(12px, 3vh, 20px) auto;
+    }
+    .error-message {
+        font-size: clamp(14px, 3vw, 18px);
+        margin-top: clamp(10px, 2.5vh, 15px);
+    }
 }
