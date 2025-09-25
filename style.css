@@ -76,7 +76,7 @@ h2 {
     width: 100%;
     font-family: Arial, serif;
     font-size: clamp(12px, 2.5vw, 16px); /* Fuente más pequeña */
-    color: #2d436a;                      /* Azul oscuro */
+    color: #354e7b;                      /* Azul oscuro */
     text-align: justify;                 /* Justificación horizontal */
     margin-bottom: clamp(15px, 3vh, 0.5cm);
     align-self: flex-start;
@@ -116,7 +116,7 @@ h2 {
     background-color: #; transition: all 0.3s ease;
 }
 .code-item:hover {
-    background-color: #2d436a; transform: translateY(-1px);
+    background-color: #354e7b; transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(100, 149, 237, 0.2);
 }
 .code-info { flex: 1; display: flex; flex-direction: column; gap: 2px; }
@@ -134,12 +134,12 @@ h2 {
     font-family: Verdana, sans-serif; font-size: clamp(11px, 2.2vw, 13px);
     font-weight: bold; cursor: pointer; transition: all 0.3s ease; white-space: nowrap;
 }
-.select-button:hover { background-color: #2d436a; transform: scale(1.05); }
+.select-button:hover { background-color: #354e7b; transform: scale(1.05); }
 .action-buttons {
     width: 100%; display: flex; justify-content: center; margin-top: clamp(20px, 4vh, 30px);
 }
 .new-search-button {
-    background-color: #2d436a; color: white; border: none;
+    background-color: #354e7b; color: white; border: none;
     padding: clamp(12px, 2.5vh, 18px) clamp(24px, 5vw, 32px); border-radius: 10px;
     font-family: Verdana, sans-serif; font-size: clamp(15px, 3.2vw, 18px);
     font-weight: bold; cursor: pointer; transition: all 0.3s ease; text-decoration: none;
