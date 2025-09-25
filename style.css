@@ -35,7 +35,7 @@ body {
     align-items: center;        
     justify-content: flex-start;
     width: 100%;
-    max-width: 25cm;
+    max-width: 30cm;
     min-height: 100vh;
     margin: 2cm auto 0;         /* Mantiene el margen superior original */
 }
@@ -121,12 +121,12 @@ h2 {
 .code-info { flex: 1; display: flex; flex-direction: column; gap: 2px; }
 
 .code-number {
-    font-family: Verdana; font-size: clamp(12px, 3vw, 15px);
+    font-family: Arial,srif; font-size: clamp(13px, 3vw, 17px);
     color: #000 
  }
 
 .code-description {
-    font-family: Verdana; font-size: clamp(12px, 3vw, 15px);
+    font-family: Arial,serif; font-size: clamp(13px, 3vw, 17px);
     color: #000
 }    
 .select-button {
