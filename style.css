@@ -107,11 +107,13 @@ h2 {
     width: 100%; display: flex; flex-direction: column; gap: clamp(4px, 0.8vh, 8px);
     margin-top: clamp(5px, 1vh, 10px);
 }
+
 .code-item {
     width: 100%; display: flex; justify-content: space-between; align-items: center;
-    padding: clamp(6px, 1.2vh, 10px); border #6495ED: 2px solid ; border-radius: 10px;
-    background-color: #fff; transition: all 0.3s ease;
+    padding: clamp(6px, 1.2vh, 10px); border: 2px solid #6495ED; border-radius: 10px;
+    background-color: #f8f9ff; transition: all 0.3s ease;
 }
+
 .code-item:hover {
     background-color: #bceeff; transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(100, 149, 237, 0.2);
