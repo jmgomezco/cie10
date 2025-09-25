@@ -12,42 +12,45 @@ body {
     overflow-x: hidden;
 }
 
+.container-inicial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;        /* Centra los hijos, excepto h2 */
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 25cm;
+    min-height: 100vh;
+    margin: 2cm auto 0;         /* Mantiene el margen superior y centrado horizontal general */
+}
+
+.container-inicial > h2 {
+    align-self: flex-start;     /* ¡ESTA LÍNEA PEGA EL H2 A LA IZQUIERDA DEL CONTENEDOR! */
+    /* el resto de estilos van en el selector h2 como abajo */
+}
+
 h2 {
     font-family: 'Orbitron', Arial, sans-serif;
-    font-size: clamp(18px, 4vw, 28px);      /* Fuente amigable */
+    font-size: clamp(18px, 4vw, 28px);      
     font-weight: 900;
     font-style: normal;
     color: #fff;
     margin-left: 0;
     background: #000;
-    margin: 0 0 clamp(28px, 5vh, 40px) 0;   /* Sin margen izquierdo */
-    padding: 14px 25px;                     /* Padding agradable */
+    margin: 0 0 clamp(28px, 5vh, 40px) 0;
+    padding: 14px 25px;
     line-height: 1.3;
     letter-spacing: 1.2px;
     text-shadow: none;
-    text-align: center;                     /* Centra el texto en el recuadro */
+    text-align: center;
     border-radius: 0;
     border: none;
-    width: fit-content;                     /* Sólo lo necesario para el título */
-    min-width: 200px;                       /* Opcional */
+    width: fit-content;
+    min-width: 200px;
     box-sizing: border-box;
     display: flex;
-    align-items: center;                    /* Centrado vertical */
-    justify-content: center;                /* Centrado horizontal */
-}
-
-
-/* Pantalla inicial */
-.container-inicial {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    max-width: 25cm;
-    min-height: 100vh;
-    margin: 2cm auto 0; /* Mantiene el margen original para la pantalla inicial */
-   
+    justify-content: center;
+    /* align-self: flex-start;  <-- Mejor ponerlo en el selector de arriba para evitar afectar otros h2 fuera de .container-inicial */
 }
 
 /* Pantalla resultados */
