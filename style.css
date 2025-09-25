@@ -85,11 +85,6 @@ h2 {
 }
 
 
-/* Reduce distancia debajo del título SOLAMENTE en pantalla de resultados */
-.container-resultados h2 {
-    margin-bottom: clamp(15px, 3vh, 24px); /* Mucho menor separación que el original */
-}
-
 .instrucciones {
     width: 100%;
     font-family: Arial, serif;
