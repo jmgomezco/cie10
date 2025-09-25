@@ -64,10 +64,15 @@ container-resultados {
     width: 100%;
     max-width: 25cm;
     min-height: 100vh;
-    margin: 1cm auto 0;/* Mantiene el margen superior y centrado horizontal general */
+    margin: 2cm auto 0;/* Mantiene el margen superior y centrado horizontal general */
     background-color: #ffffff;
 }
 
+.container-resultados > h2 {
+    align-self: flex-start;     /* ¡ESTA LÍNEA PEGA EL H2 A LA IZQUIERDA DEL CONTENEDOR! */
+    margin-top: -1cm;           /* Hace que SOLO el h2 suba, el resto no se mueve */
+    /* el resto de estilos van en el selector h2 como abajo */
+}
 .instrucciones {
     width: 100%;
     font-family: Arial, serif;
