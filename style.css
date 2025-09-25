@@ -64,13 +64,14 @@ h2 {
     width: 100%;
     max-width: 25cm;
     min-height: 100vh;
-    margin: 1cm auto 0;    /* Se reduce el margen superior para acercar el contenido al título */
+    margin: 2cm auto 0;    /* Se reduce el margen superior para acercar el contenido al título */
     padding: 0px;
     background-color: #ffffff;
 }
 
 .container-resultados > h2 {
     align-self: flex-start;     /* ¡ESTA LÍNEA PEGA EL H2 A LA IZQUIERDA DEL CONTENEDOR! */
+    margin-top: -1cm;   
 }
 
 .instrucciones {
