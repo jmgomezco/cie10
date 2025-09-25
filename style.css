@@ -69,6 +69,10 @@ h2 {
     background-color: #ffffff;
 }
 
+.container-resultados > h2 {
+    align-self: flex-start;     /* ¡ESTA LÍNEA PEGA EL H2 A LA IZQUIERDA DEL CONTENEDOR! */
+}
+
 .instrucciones {
     width: 100%;
     font-family: Arial, serif;
