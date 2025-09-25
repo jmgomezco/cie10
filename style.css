@@ -12,18 +12,39 @@ body {
     overflow-x: hidden;
 }
 
-/* Pantalla inicial */
 .container-inicial {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;        
     justify-content: flex-start;
     width: 100%;
     max-width: 25cm;
     min-height: 100vh;
-    margin: 2cm auto 0; /* Mantiene el margen original para la pantalla inicial */
-   
+    margin: 2cm auto 0;         /* Mantiene el margen superior original */
 }
+
+.container-inicial > h2 {
+    align-self: flex-start;     
+    margin-top: -1cm;           /* Hace que SOLO el h2 suba, el resto no se mueve */
+}
+
+
+.container-resultados {
+    display: flex;
+    flex-direction: column;
+    align-items: center;        
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 25cm;
+    min-height: 100vh;
+    margin: 2cm auto 0;         /* Mantiene el margen superior original */
+}
+
+.container-resultados > h2 {
+    align-self: flex-start;     
+    margin-top: -1cm;           /* Hace que SOLO el h2 suba, el resto no se mueve */
+}
+
 
 /* Pantalla resultados */
 .container-resultados {
