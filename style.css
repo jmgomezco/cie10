@@ -25,6 +25,7 @@ body {
 
 .container-inicial > h2 {
     align-self: flex-start;     /* ¡ESTA LÍNEA PEGA EL H2 A LA IZQUIERDA DEL CONTENEDOR! */
+    margin-top: -1cm;           /* Hace que SOLO el h2 suba, el resto no se mueve */
     /* el resto de estilos van en el selector h2 como abajo */
 }
 
@@ -65,6 +66,10 @@ h2 {
     margin: 0.5cm auto 0;    /* Se reduce el margen superior para acercar el contenido al título */
     padding: 0px;
     background-color: #ffffff;
+}
+
+.container-resultados > h2 {
+    align-self: flex-start;     /* ¡ESTA LÍNEA PEGA EL H2 A LA IZQUIERDA DEL CONTENEDOR! */
 }
 
 
