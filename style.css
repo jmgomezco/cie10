@@ -30,7 +30,7 @@ body {
 
 h2 {
     font-family: 'Orbitron', Arial, sans-serif;
-    font-size: clamp(18px, 4vw, 28px);      
+    font-size: clamp(12px, 6vw, 32px);      
     font-weight: 900;
     font-style: normal;
     color: #fff;
