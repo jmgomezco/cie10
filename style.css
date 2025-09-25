@@ -64,16 +64,11 @@ container-resultados {
     width: 100%;
     max-width: 25cm;
     min-height: 100vh;
-    margin: 2cm auto 0;
+    margin: 1cm auto 0;
     padding: 0px;
     background-color: #ffffff;
 }
 
-.container-resultados > h2 {
-    align-self: flex-start;
-    margin-top: -1cm;                /* Título a 1cm del borde superior de pantalla */
-    margin-bottom: 1;                /* Sin margen inferior */
-}
 
 .instrucciones {
     width: 100%;
