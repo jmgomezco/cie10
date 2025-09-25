@@ -102,14 +102,14 @@ h2 {
     width: 100%; font-family: Arial, serif; font-size: clamp(16px, 4vw, 20px);
     color: black; text-align: justify; margin-bottom: clamp(5px, 1vh, 10px); line-height: 1.4;
 }
-.texto-placeholder { color: #354e7b; font-weight: normal; }
+.texto-placeholder { color: #6495ED; font-weight: normal; }
 .codes-list {
     width: 100%; display: flex; flex-direction: column; gap: clamp(4px, 0.8vh, 8px);
     margin-top: clamp(5px, 1vh, 10px);
 }
 .code-item {
     width: 100%; display: flex; justify-content: space-between; align-items: center;
-    padding: clamp(6px, 1.2vh, 10px); border: 2px solid ; border-radius: 10px;
+    padding: clamp(6px, 1.2vh, 10px); border #6495ED: 2px solid ; border-radius: 10px;
     background-color: #fff; transition: all 0.3s ease;
 }
 .code-item:hover {
@@ -123,7 +123,7 @@ h2 {
 }
 .code-description {
     font-family: Verdana, serif; font-size: clamp(12px, 2.5vw, 15px);
-    color: #646464; line-height: 1.3; font-weight: 400;
+    color: #000; line-height: 1.3; font-weight: 400;
 }
 .select-button {
     background-color: #6495ED; color: white; border: none;
