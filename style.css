@@ -55,21 +55,17 @@ h2 {
 }
 
 /* Pantalla resultados */
-.container-resultados {
+
+container-resultados {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;        /* Centra los hijos, excepto h2 */
     justify-content: flex-start;
     width: 100%;
     max-width: 25cm;
     min-height: 100vh;
-    margin: 0.5cm auto 0;    /* Se reduce el margen superior para acercar el contenido al título */
-    padding: 0px;
+    margin: 1cm auto 0;/* Mantiene el margen superior y centrado horizontal general */
     background-color: #ffffff;
-}
-
-.container-resultados > h2 {
-    align-self: flex-start;     /* ¡ESTA LÍNEA PEGA EL H2 A LA IZQUIERDA DEL CONTENEDOR! */
 }
 
 .instrucciones {
