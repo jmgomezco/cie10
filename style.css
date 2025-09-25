@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+
 * { box-sizing: border-box; }
 
 body {
@@ -10,6 +10,26 @@ body {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+}
+
+h2 {
+    font-family: 'Orbitron', Arial, sans-serif;
+    font-size: clamp(28px, 7vw, 48px);
+    font-weight: 900;
+    font-style: normal;
+    color: #fff;
+    background: #000;
+    margin: 0 0 clamp(40px, 8vh, 80px) 0;
+    padding: 32px 0 32px 0; /* padding-left: 0 para alineación perfecta */
+    line-height: 1.1;
+    letter-spacing: 2px;
+    text-shadow: none;
+    text-align: left;
+    border-radius: 0;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
 }
 
 /* Pantalla inicial */
