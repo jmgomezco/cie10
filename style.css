@@ -19,11 +19,12 @@ body {
     width: 100%;
     max-width: 25cm;
     min-height: 100vh;
-    margin: 2cm auto 0;        
+    margin: 2cm auto 0;         /* Mantiene el margen superior original */
+}
 
 .container-inicial > h2 {
     align-self: flex-start;     
-    margin-top: -1cm;          
+    margin-top: -1cm;           /* Hace que SOLO el h2 suba, el resto no se mueve */
 }
 
 /* Pantalla resultados */
@@ -74,7 +75,7 @@ h2 {
     width: 100%;
     font-family: Arial, serif;
     font-size: clamp(12px, 2.5vw, 16px); /* Fuente más pequeña */
-    color: #000;                     
+    color: #000;                      /* Azul oscuro */
     text-align: justify;                 /* Justificación horizontal */
     margin-bottom: clamp(15px, 3vh, 0.5cm);
     align-self: flex-start;
@@ -117,78 +118,4 @@ h2 {
     background-color: #bceeff; transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(100, 149, 237, 0.2);
 }
-.code-info { flex: 1; display: flex; flex-direction: column; gap: 2px; }
-
-.code-number {
-    font-family: Arial,srif; font-size: clamp(13px, 3vw, 17px);
-    color: #000 
- }
-
-.code-description {
-    font-family: Arial,serif; font-size: clamp(13px, 3vw, 17px);
-    color: #000
-}    
-.select-button {
-    background-color: #6495ED; color: white; border: none;
-    padding: clamp(6px, 1.2vh, 10px) clamp(12px, 2.5vw, 16px); border-radius: 8px;
-    font-family: Verdana, sans-serif; font-size: clamp(11px, 2.2vw, 13px);
-    font-weight: bold; cursor: pointer; transition: all 0.3s ease; white-space: nowrap;
-}
-.select-button:hover { background-color: #ba4f13; transform: scale(1.05); }
-
-.action-buttons {
-    width: 100%; display: flex; justify-content: center; margin-top: clamp(20px, 4vh, 30px);
-}
-.new-search-button {
-    background-color: #354e7b; color: white; border: none;
-    padding: clamp(12px, 2.5vh, 18px) clamp(24px, 5vw, 32px); border-radius: 10px;
-    font-family: Verdana, sans-serif; font-size: clamp(15px, 3.2vw, 18px);
-    font-weight: bold; cursor: pointer; transition: all 0.3s ease; text-decoration: none;
-    display: inline-block;
-}
-.new-search-button:hover {
-    background-color: #6495ED; transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(40, 183, 97, 0.3);
-}
-.no-codes-message {
-    width: 100%; text-align: center; margin-top: clamp(20px, 4vh, 30px);
-}
-.no-codes-message p {
-    font-family: Verdana, sans-serif; font-size: clamp(15px, 3.2vw, 17px); color: #666;
-    margin-bottom: clamp(15px, 3vh, 20px);
-}
-
-/* Responsive rules (puedes agregar más si necesitas) */
-@media (max-width: 1023px) {
-    .container-inicial, .container-resultados {
-        margin-top: clamp(1.5cm, 8vh, 4cm);
-        padding: 0 clamp(10px, 4vw, 20px);
-    }
-    h2 {
-        font-size: clamp(24px, 6vw, 36px);
-        margin-bottom: clamp(12px, 4vh, 20px);
-    }
-    /* Reduce distancia debajo del título SOLO en resultados modo móvil */
-    .container-resultados h2 {
-        margin-bottom: clamp(10px, 2vh, 15px);
-    }
-    .instrucciones {
-        font-size: clamp(16px, 4vw, 20px);
-        margin-bottom: clamp(0.3cm, 3vh, 0.5cm);
-    }
-    .caja-texto {
-        font-size: clamp(16px, 4vw, 20px);
-        padding: clamp(8px, 2vw, 12px);
-        border-radius: clamp(14px, 5vw, 18px);
-    }
-    .spinner {
-        width: clamp(40px, 8vw, 60px);
-        height: clamp(40px, 8vw, 60px);
-        border-width: clamp(3px, 1vw, 4px);
-        margin: clamp(12px, 3vh, 20px) auto;
-    }
-    .error-message {
-        font-size: clamp(14px, 3vw, 18px);
-        margin-top: clamp(10px, 2.5vh, 15px);
-    }
-}
+.code-info { flex: 1; display: flex
