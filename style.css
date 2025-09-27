@@ -19,7 +19,7 @@ body {
 
 .instrucciones {
     font-size: 1em;
-    color: #333;
+    color: #000;
     margin-bottom: 8px;
 }
 
@@ -42,7 +42,7 @@ body {
 /* Contador de caracteres */
 .char-counter {
     font-size: 0.95em;
-    color: #354e7b;
+    color: #000;
     margin-top: 6px;
     text-align: right;
     width: 100%;
