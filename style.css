@@ -19,12 +19,11 @@ body {
     width: 100%;
     max-width: 25cm;
     min-height: 100vh;
-    margin: 2cm auto 0;         /* Mantiene el margen superior original */
-}
+    margin: 2cm auto 0;        
 
 .container-inicial > h2 {
     align-self: flex-start;     
-    margin-top: -1cm;           /* Hace que SOLO el h2 suba, el resto no se mueve */
+    margin-top: -1cm;          
 }
 
 /* Pantalla resultados */
@@ -75,7 +74,7 @@ h2 {
     width: 100%;
     font-family: Arial, serif;
     font-size: clamp(12px, 2.5vw, 16px); /* Fuente más pequeña */
-    color: #000;                      /* Azul oscuro */
+    color: #000;                     
     text-align: justify;                 /* Justificación horizontal */
     margin-bottom: clamp(15px, 3vh, 0.5cm);
     align-self: flex-start;
