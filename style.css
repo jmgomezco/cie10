@@ -75,7 +75,6 @@ h2 {
     width: 100%;
     font-family: Arial, serif;
     font-size: clamp(12px, 2.5vw, 16px); /* Fuente más pequeña */
-    color: #646464;                      /* Azul oscuro */
     text-align: justify;                 /* Justificación horizontal */
     margin-bottom: clamp(15px, 3vh, 0.5cm);
     align-self: flex-start;
