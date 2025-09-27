@@ -1,30 +1,35 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos-titulo.css">
 </head>
 <body>
     <!-- Pantalla inicial -->
     <div class="container-inicial" id="container-inicial">
+        <h2>NhugAi</h2>
         <div class="instrucciones">
-            Introduce un texto en lenguaje natural, luego pulse Intro. No importa el uso de mayúscualas, mínusculas o tildes. También tolero ciertos errores tipogáficos o ortográficos. Solo tengo en cuenta los primeros 125 carácteres intrducidos.
+            Introduzca un texto en lenguaje natural para el código CIE-10 que desea encontrar, luego pulse Intro. Solo tengo en cuenta los primeros 200 carácteres introducidos.
         </div>
         <input 
             type="text" 
             class="caja-texto" 
             id="textoInput"
             autocomplete="off"
-            maxlength="125"
         >
-        <div class="char-counter" id="charCounter">Carácteres disponibles: 125</div>
         <div class="error-message" id="errorMessage"></div>
+        <!-- Spinner siempre presente en el DOM -->
         <div class="spinner" id="spinner"></div>
     </div>
+    <!-- Pantalla resultados -->
     <div class="container-resultados" id="container-resultados" style="display:none;">
+        <h2>NhugAi</span></h2>
         <p class="message-paragraph">
-            Códigos propuestos para tu entrada: <span class="texto-placeholder" id="texto-placeholder"></span>.
+            Códigos propuestos para su entrada: <span class="texto-placeholder" id="texto-placeholder"></span>.
         </p>
         <div class="codes-list" id="codes-list"></div>
         <div class="action-buttons">
@@ -33,18 +38,9 @@
         <div class="no-codes-message" id="no-codes-message" style="display:none;">
             <p>No se encontraron códigos candidatos.</p>
         </div>
+        <!-- Spinner también aquí para búsquedas secundarias -->
         <div class="spinner" id="spinner-resultados" style="display:none;"></div>
     </div>
     <script src="main.js"></script>
-    <script>
-        const textoInput = document.getElementById('textoInput');
-        const charCounter = document.getElementById('charCounter');
-        const MAX_CHARS = 125;
-
-        textoInput.addEventListener('input', function() {
-            const charsLeft = Math.max(0, MAX_CHARS - textoInput.value.length);
-            charCounter.textContent = `Caracteres disponibles: ${charsLeft}`;
-        });
-    </script>
 </body>
 </html>
