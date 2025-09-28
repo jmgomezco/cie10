@@ -36,11 +36,6 @@ body {
 .container-inicial > h2 {
     margin-bottom: clamp(10px, 4vw, 36px);
 }
-@media (max-width: 600px) {
-    .container-inicial > h2 {
-        margin-bottom: clamp(8px, 6vw, 16px);
-    }
-}
 
 @media (min-width: 601px) and (max-width: 1024px) {
     .container-inicial > h2 {
