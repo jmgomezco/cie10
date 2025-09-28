@@ -33,9 +33,6 @@ body {
 }
 
 /* --- Disminuir distancia entre título y el resto en pantalla inicial proporcionalmente --- */
-.container-inicial > h2 {
-    margin-bottom: clamp(10px, 4vw, 36px);
-}
 
 @media (min-width: 601px) and (max-width: 1024px) {
     .container-inicial > h2 {
