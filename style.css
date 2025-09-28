@@ -239,12 +239,12 @@ h2 {
 }
 
 .new-search-button:hover {
-    background-color: #6495ED;
+    background-color: #ba4f13;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(40, 183, 97, 0.3);
 }
 .new-search-button:focus {
-    background-color: #6495ED;
+    background-color: #ba4f13;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(40, 183, 97, 0.3);
 }
