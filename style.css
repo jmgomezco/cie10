@@ -158,6 +158,24 @@ h2 {
     margin-bottom: clamp(15px, 3vh, 20px);
 }
 
+/* --- Resaltado de item y botón "Elegir" por foco/hover/activo --- */
+.select-button:focus,
+.select-button.active,
+.select-button:hover {
+    background-color: #ba4f13;
+    transform: scale(1.05);
+}
+
+/* El item se resalta si el botón está enfocado, activo o en hover */
+.code-item.selected,
+.code-item:has(.select-button:focus),
+.code-item:has(.select-button.active),
+.code-item:has(.select-button:hover) {
+    background-color: #bceeff;
+    box-shadow: 0 2px 8px rgba(100, 149, 237, 0.2);
+    transform: translateY(-1px);
+}
+
 /* Responsive rules (puedes agregar más si necesitas) */
 @media (max-width: 1023px) {
     .container-inicial, .container-resultados {
