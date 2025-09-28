@@ -237,17 +237,18 @@ h2 {
     text-decoration: none;
     display: inline-block;
 }
+
 .new-search-button:hover {
     background-color: #6495ED;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(40, 183, 97, 0.3);
 }
-
-.no-codes-message {
-    width: 100%;
-    text-align: center;
-    margin-top: clamp(18px, 3vh, 32px);
+.new-search-button:focus {
+    background-color: #6495ED;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 183, 97, 0.3);
 }
+
 .no-codes-message p {
     font-family: Verdana, sans-serif;
     color: #666;
