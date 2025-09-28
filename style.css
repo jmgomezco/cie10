@@ -34,7 +34,7 @@ body {
 
 /* --- Aumentar distancia entre título y el resto en pantalla inicial proporcionalmente --- */
 .container-inicial > h2 {
-    margin-bottom: clamp(32px, 7vw, 64px); /* desktop: más distancia */
+margin-bottom: clamp(48px, 10vw, 96px);
 }
 @media (max-width: 600px) {
     .container-inicial > h2 {
