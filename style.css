@@ -32,6 +32,21 @@ body {
     margin-top: 0;
 }
 
+/* --- Disminuir distancia entre título y el resto en pantalla inicial proporcionalmente --- */
+.container-inicial > h2 {
+    margin-bottom: clamp(10px, 4vw, 36px);
+}
+@media (max-width: 600px) {
+    .container-inicial > h2 {
+        margin-bottom: clamp(8px, 6vw, 16px);
+    }
+}
+@media (min-width: 601px) and (max-width: 1024px) {
+    .container-inicial > h2 {
+        margin-bottom: clamp(12px, 5vw, 24px);
+    }
+}
+
 h2 {
     font-family: 'Orbitron', Arial, sans-serif;
     font-size: clamp(18px, 5vw, 36px);      
@@ -296,6 +311,10 @@ h2 {
         font-size: clamp(13px, 4vw, 15px);
         margin-bottom: clamp(10px, 3vw, 16px);
     }
+    /* Disminuir aún más distancia en móvil entre título y elementos en pantalla inicial */
+    .container-inicial > h2 {
+        margin-bottom: clamp(8px, 6vw, 16px);
+    }
 }
 
 /* --- Responsive: Pantallas tipo portátil --- */
@@ -354,5 +373,9 @@ h2 {
     .no-codes-message p {
         font-size: clamp(13px, 2vw, 16px);
         margin-bottom: clamp(12px, 3vw, 18px);
+    }
+    /* Disminuir distancia en portátil entre título y elementos en pantalla inicial */
+    .container-inicial > h2 {
+        margin-bottom: clamp(12px, 5vw, 24px);
     }
 }
