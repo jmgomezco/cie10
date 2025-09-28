@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>NhugAi</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos-titulo.css">
@@ -13,7 +15,7 @@
     <div class="container-inicial" id="container-inicial">
         <h2>NhugAi</h2>
         <div class="instrucciones">
-            Introduzca un texto en lenguaje natural, luego pulse Intro. Solo se procesarán los primeros 150 carácteres introducidos. En la siguiente pantalla mostraré candidatos para elegir uno.
+            Introduzca un texto en lenguaje natural, luego pulse Intro. Solo se procesarán los primeros 150 carácteres introducidos. En la siguiente pantalla mostraré candidatos para elegir uno o ninguno, según su criterio. Puedes desplazarte entre ellos con ratón o tabulador.
         </div>
         <input 
             type="text" 
@@ -27,7 +29,7 @@
     </div>
     <!-- Pantalla resultados -->
     <div class="container-resultados" id="container-resultados" style="display:none;">
-        <h2>NhugAi</span></h2>
+        <h2>NhugAi</h2>
         <p class="message-paragraph">
             Códigos propuestos para su entrada: <span class="texto-placeholder" id="texto-placeholder"></span>.
         </p>
@@ -38,8 +40,7 @@
         <div class="no-codes-message" id="no-codes-message" style="display:none;">
             <p>No se encontraron códigos candidatos.</p>
         </div>
-        <!-- Spinner también aquí para búsquedas secundarias -->
-        <div class="spinner" id="spinner-resultados" style="display:none;"></div>
+        <!-- Eliminado spinner-resultados -->
     </div>
     <script src="main.js"></script>
 </body>
