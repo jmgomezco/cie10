@@ -48,7 +48,7 @@ body {
 
 h2 {
     font-family: 'Orbitron', Arial, sans-serif;
-    font-size: clamp(12px, 6vw, 32px);      
+    font-size: clamp(14px, 6vw, 32px);      
     font-weight: 900;
     font-style: normal;
     color: #fff;
@@ -74,7 +74,7 @@ h2 {
 .instrucciones {
     width: 100%;
     font-family: Arial, serif;
-    font-size: clamp(12px, 2.5vw, 16px); /* Fuente más pequeña */
+    font-size: clamp(14px, 2.5vw, 18px); /* Fuente más pequeña */
     text-align: justify;                 /* Justificación horizontal */
     margin-bottom: clamp(15px, 3vh, 0.5cm);
     align-self: flex-start;
