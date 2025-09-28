@@ -35,7 +35,7 @@ body {
     align-items: center;        
     justify-content: flex-start;
     width: 100%;
-    max-width: 30cm;
+    max-width: 25cm;
     min-height: 100vh;
     margin: 2cm auto 0;         /* Mantiene el margen superior original */
 }
