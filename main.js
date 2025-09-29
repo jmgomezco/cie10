@@ -81,31 +81,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para mostrar toast emergente de éxito
     function showSuccessToast(message) {
-        let toast = document.getElementById('success-toast');
-        if (!toast) {
-            toast = document.createElement('div');
-            toast.id = 'success-toast';
-            document.body.appendChild(toast);
-        }
-        toast.innerText = message;
+    let toast = document.getElementById('success-toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'success-toast';
+        document.body.appendChild(toast);
+    }
+    toast.innerText = message;
 
-        // Estilos amigables, centrado, verde #229954
-        toast.style.position = 'fixed';
-        toast.style.top = '50%';
-        toast.style.left = '50%';
-        toast.style.transform = 'translate(-50%, -50%)';
-        toast.style.background = '#636b2f';
-        toast.style.color = '#fff';
-        toast.style.padding = '1.5em 2.5em';
-        toast.style.borderRadius = '10px';
-        toast.style.fontSize = '1.2em';
-        toast.style.boxShadow = '0 2px 8px rgba(0,0,0,0.23)';
-        toast.style.zIndex = 9999;
-        toast.style.textAlign = 'center';
-        toast.style.opacity = 1;
-        toast.style.transition = 'opacity 0.5s';
+    // Estilos amigables, centrado, verde #229954, fuente Arial
+    toast.style.position = 'fixed';
+    toast.style.top = '50%';
+    toast.style.left = '50%';
+    toast.style.transform = 'translate(-50%, -50%)';
+    toast.style.background = '#229954'; // verde solicitado
+    toast.style.color = '#fff';
+    toast.style.padding = '1.5em 2.5em';
+    toast.style.borderRadius = '10px';
+    toast.style.fontSize = '1.2em';
+    toast.style.fontFamily = 'Arial, sans-serif'; // fuente Arial
+    toast.style.boxShadow = '0 2px 8px rgba(0,0,0,0.23)';
+    toast.style.zIndex = 9999;
+    toast.style.textAlign = 'center';
+    toast.style.opacity = 1;
+    toast.style.transition = 'opacity 0.5s';
 
+    setTimeout(() => {
+        toast.style.opacity = 0;
         setTimeout(() => {
+            toast.remove();
+            // Redirige y limpia el historial
+            history.replaceState(null, "", "/");
+            window.close();
+        }, 500);
+    }, 2000); // 2 segundos visible
+}
+    
+         setTimeout(() => {
             toast.style.opacity = 0;
             setTimeout(() => {
                 toast.remove();
