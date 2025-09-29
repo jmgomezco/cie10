@@ -1,24 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // SOLO permitir apertura desde index.html de NhugAi
-    const INDEX_URL = "https://jmgomezco.github.io/NhugAi/index.html";
-
-    // Comprobación de opener y origen
-    let openedFromIndex = false;
-    try {
-        if (window.opener && window.opener.location && window.opener.location.href.startsWith(INDEX_URL)) {
-            openedFromIndex = true;
-        }
-    } catch (err) {
-        // Si hay error de cross-origin, asume que no es desde index.html
-        openedFromIndex = false;
-    }
-
-    // Si NO fue abierta desde index.html, redirige
-    if (!openedFromIndex && window.location.href !== INDEX_URL) {
-        window.location.href = INDEX_URL;
-        return;
-    }
-
     // Elementos de la pantalla inicial
     const containerInicial = document.getElementById("container-inicial");
     const input = document.getElementById("textoInput");
@@ -124,12 +104,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 showSuccessToast("Se grabó con éxito su elección");
             } else {
                 showError("No se pudo registrar la selección.");
-                volverAPantallaInicial();
             }
         } catch {
             hideSpinner();
             showError("Error al conectar con el servidor.");
-            volverAPantallaInicial();
         }
     }
 
@@ -162,25 +140,15 @@ document.addEventListener("DOMContentLoaded", function () {
             toast.style.opacity = 0;
             setTimeout(() => {
                 toast.remove();
-                if (openedFromIndex) {
+                // Cierre de ventana por JS, solo si fue abierta por window.open
+                if (window.opener) {
                     window.close();
                 } else {
-                    window.location.href = INDEX_URL;
+                    // Si no, simplemente recarga para volver al inicio
+                    location.reload();
                 }
             }, 500);
         }, 2000);
-    }
-
-    function volverAPantallaInicial() {
-        containerInicial.style.display = "flex";
-        containerResultados.style.display = "none";
-        history.replaceState(null, "", "/");
-        input.value = "";
-        hideMessages();
-        currentsessionId = null;
-        setTimeout(() => {
-            input.focus();
-        }, 100);
     }
 
     // Entrada principal: Intro en caja texto
@@ -217,12 +185,21 @@ document.addEventListener("DOMContentLoaded", function () {
         } catch (err) {
             hideSpinner();
             showError("Error: " + (err.message || "Error desconocido"));
-            volverAPantallaInicial();
         }
     });
 
     // Nuevo intento
-    newSearchBtn.addEventListener("click", volverAPantallaInicial);
+    newSearchBtn.addEventListener("click", () => {
+        containerInicial.style.display = "flex";
+        containerResultados.style.display = "none";
+        history.replaceState(null, "", "/");
+        input.value = "";
+        hideMessages();
+        currentsessionId = null;
+        setTimeout(() => {
+            input.focus();
+        }, 100);
+    });
 
     // Inicialización
     hideMessages();
