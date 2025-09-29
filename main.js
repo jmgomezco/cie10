@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
         spinner.style.display = "none";
     }
 
-
     function renderCodes(codes) {
     resultSectionCodesList.innerHTML = "";
     if (!codes || codes.length === 0) {
@@ -53,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
     noCodesMsg.style.display = "none";
+
     codes.forEach((code, idx) => {
         const codeItem = document.createElement("div");
         codeItem.className = "code-item";
@@ -75,16 +75,37 @@ document.addEventListener("DOMContentLoaded", function () {
             seleccionarCodigo(code);
         };
 
+        // Evento para gestionar focus (teclado/tabulador)
+        btn.addEventListener("focus", () => {
+            // Quitar estado activo de todos los code-items
+            document.querySelectorAll(".code-item.activo").forEach(el => el.classList.remove("activo"));
+            codeItem.classList.add("activo");
+        });
+
+        // Evento para gestionar hover (ratón)
+        btn.addEventListener("mouseenter", () => {
+            document.querySelectorAll(".code-item.activo").forEach(el => el.classList.remove("activo"));
+            codeItem.classList.add("activo");
+        });
+
+        // Quitar el estado activo cuando el botón pierde foco (por teclado)
+        btn.addEventListener("blur", () => {
+            codeItem.classList.remove("activo");
+        });
+
+        // Quitar el estado activo cuando el ratón sale del botón
+        btn.addEventListener("mouseleave", () => {
+            codeItem.classList.remove("activo");
+        });
+
         codeItem.appendChild(info);
         codeItem.appendChild(btn);
         resultSectionCodesList.appendChild(codeItem);
-
-        // NO se pone el foco inicial en ningún botón.
+        // No se pone el foco inicial en ningún botón.
     });
 }
-    
 
-    
+       
      // Función para mostrar toast emergente de éxito
     function showSuccessToast(message) {
         let toast = document.getElementById('success-toast');
