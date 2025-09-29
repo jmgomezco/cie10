@@ -225,9 +225,9 @@ h2 {
 .code-item:has(.select-button:focus),
 .code-item:has(.select-button.active),
 .code-item:has(.select-button:hover) {
-    background-color: initial;
-    box-shadow: none;
-    transform: none;
+    background-color: initial !important;
+    box-shadow: none !important;
+    transform: none !important;
 }
 
 .code-info {
