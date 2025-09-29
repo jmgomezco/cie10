@@ -218,7 +218,7 @@ h2 {
 .select-button:hover,
 .select-button:focus,
 .select-button.active {
-    background-color: #ba4f13;
+    background-color: #636b2f;
     transform: scale(1.05);
 }
 
@@ -255,12 +255,12 @@ h2 {
 }
 
 .new-search-button:hover {
-    background-color: #ba4f13;
+    background-color: #636b2f;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(40, 183, 97, 0.3);
 }
 .new-search-button:focus {
-    background-color: #ba4f13;
+    background-color: #636b2f;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(40, 183, 97, 0.3);
 }
