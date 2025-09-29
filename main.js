@@ -45,51 +45,54 @@ document.addEventListener("DOMContentLoaded", function () {
         spinner.style.display = "none";
     }
 
-    // Renderiza los códigos y selecciona el primero
+
     function renderCodes(codes) {
-        resultSectionCodesList.innerHTML = "";
-        if (!codes || codes.length === 0) {
-            noCodesMsg.style.display = "block";
-            return;
-        }
-        noCodesMsg.style.display = "none";
-        codes.forEach((code, idx) => {
-            const codeItem = document.createElement("div");
-            codeItem.className = "code-item";
-            if (idx === 0) codeItem.classList.add("selected"); // SOLO el primer item recibe el fondo especial
-
-            const info = document.createElement("div");
-            info.className = "code-info";
-            const number = document.createElement("div");
-            number.className = "code-number";
-            number.textContent = code.codigo || code.code || "";
-            const desc = document.createElement("div");
-            desc.className = "code-description";
-            desc.textContent = code.desc || code.descripcion || code.description || "";
-            info.appendChild(number);
-            info.appendChild(desc);
-
-            const btn = document.createElement("button");
-            btn.className = "select-button";
-            btn.textContent = "Elegir";
-            btn.onclick = function () {
-                seleccionarCodigo(code);
-            };
-
-            codeItem.appendChild(info);
-            codeItem.appendChild(btn);
-            resultSectionCodesList.appendChild(codeItem);
-
-            // Foco en el primer botón
-            if (idx === 0) {
-                setTimeout(() => {
-                    btn.focus();
-                }, 0);
-            }
-        });
+    resultSectionCodesList.innerHTML = "";
+    if (!codes || codes.length === 0) {
+        noCodesMsg.style.display = "block";
+        return;
     }
+    noCodesMsg.style.display = "none";
+    codes.forEach((code, idx) => {
+        const codeItem = document.createElement("div");
+        codeItem.className = "code-item";
+        // Se elimina la clase "selected" en el primer item
+        // if (idx === 0) codeItem.classList.add("selected");
 
-    // Función para mostrar toast emergente de éxito
+        const info = document.createElement("div");
+        info.className = "code-info";
+        const number = document.createElement("div");
+        number.className = "code-number";
+        number.textContent = code.codigo || code.code || "";
+        const desc = document.createElement("div");
+        desc.className = "code-description";
+        desc.textContent = code.desc || code.descripcion || code.description || "";
+        info.appendChild(number);
+        info.appendChild(desc);
+
+        const btn = document.createElement("button");
+        btn.className = "select-button";
+        btn.textContent = "Elegir";
+        btn.onclick = function () {
+            seleccionarCodigo(code);
+        };
+
+        codeItem.appendChild(info);
+        codeItem.appendChild(btn);
+        resultSectionCodesList.appendChild(codeItem);
+
+        // El foco sigue en el primer botón para accesibilidad
+        if (idx === 0) {
+            setTimeout(() => {
+                btn.focus();
+            }, 0);
+        }
+    });
+}
+
+
+
+     // Función para mostrar toast emergente de éxito
     function showSuccessToast(message) {
         let toast = document.getElementById('success-toast');
         if (!toast) {
