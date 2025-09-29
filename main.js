@@ -1,4 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // SOLO permitir apertura desde index.html de NhugAi
+    const INDEX_URL = "https://jmgomezco.github.io/NhugAi/index.html";
+
+    // Comprobación de opener y origen
+    let openedFromIndex = false;
+    try {
+        if (window.opener && window.opener.location && window.opener.location.href.startsWith(INDEX_URL)) {
+            openedFromIndex = true;
+        }
+    } catch (err) {
+        // Si hay error de cross-origin, asume que no es desde index.html
+        openedFromIndex = false;
+    }
+
+    // Si NO fue abierta desde index.html, redirige
+    if (!openedFromIndex && window.location.href !== INDEX_URL) {
+        window.location.href = INDEX_URL;
+        return;
+    }
+
     // Elementos de la pantalla inicial
     const containerInicial = document.getElementById("container-inicial");
     const input = document.getElementById("textoInput");
@@ -104,13 +124,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 showSuccessToast("Se grabó con éxito su elección");
             } else {
                 showError("No se pudo registrar la selección.");
-                // Vuelve a pantalla inicial si falla
                 volverAPantallaInicial();
             }
         } catch {
             hideSpinner();
             showError("Error al conectar con el servidor.");
-            // Vuelve a pantalla inicial si falla
             volverAPantallaInicial();
         }
     }
@@ -144,19 +162,16 @@ document.addEventListener("DOMContentLoaded", function () {
             toast.style.opacity = 0;
             setTimeout(() => {
                 toast.remove();
-                // Cierre de ventana por JS, solo si fue abierta por window.open
-                if (window.opener) {
+                if (openedFromIndex) {
                     window.close();
                 } else {
-                    // Si no, simplemente recarga para volver al inicio
-                    location.reload();
+                    window.location.href = INDEX_URL;
                 }
             }, 500);
         }, 2000);
     }
 
     function volverAPantallaInicial() {
-        // Oculta resultados y muestra pantalla inicial, limpia campos y estados
         containerInicial.style.display = "flex";
         containerResultados.style.display = "none";
         history.replaceState(null, "", "/");
@@ -202,7 +217,6 @@ document.addEventListener("DOMContentLoaded", function () {
         } catch (err) {
             hideSpinner();
             showError("Error: " + (err.message || "Error desconocido"));
-            // Vuelve a pantalla inicial si falla
             volverAPantallaInicial();
         }
     });
