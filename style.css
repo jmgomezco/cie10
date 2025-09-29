@@ -216,16 +216,15 @@ h2 {
     font-family: monospace;
 }
 
-/* Fondo especial SOLO cuando el botón está en focus o hover */
-.code-item:has(.select-button:focus),
-.code-item:has(.select-button:hover) {
+/* Fondo especial SOLO en el code-item con clase .activo */
+.code-item.activo {
     background-color: #bceeff;
     box-shadow: 0 2px 8px rgba(100, 149, 237, 0.2);
     transform: translateY(-1px);
     font-family: monospace;
 }
 
-/* El botón muestra el color verde solo en focus/hover/active */
+/* El botón muestra el color verde solo si está en hover, focus o active */
 .select-button:hover,
 .select-button:focus,
 .select-button.active {
@@ -234,6 +233,7 @@ h2 {
     transform: scale(1.05);
     font-family: monospace;
 }
+
 
 .code-info {
     flex: 1;
