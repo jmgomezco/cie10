@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
     toast.style.top = '50%';
     toast.style.left = '50%';
     toast.style.transform = 'translate(-50%, -50%)';
-    toast.style.background = '#00cc4c';
+    toast.style.background = '#317f43';
     toast.style.padding = '1.5em 2.5em';
     toast.style.borderRadius = '10px';
     toast.style.fontSize = 'clamp(15px, 3vw, 22px)';
