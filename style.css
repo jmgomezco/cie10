@@ -5,11 +5,30 @@ body {
     margin: 0;
     padding: 0;
     background-color: white;
-    font-family: "Arial", Arial, sans-serif;
+    font-family: monospace;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+}
+
+/* --- Toast de éxito --- */
+#success-toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #636b2f;
+    padding: 1.5em 2.5em;
+    border-radius: 10px;
+    font-size: 1.4em;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.23);
+    z-index: 9999;
+    text-align: center;
+    color: #fff;
+    opacity: 1;
+    transition: opacity 0.5s;
+    font-family: monospace;
 }
 
 /* --- Contenedores principales --- */
@@ -24,6 +43,7 @@ body {
     margin: 32px auto 0;
     padding: 0 14px;
     box-sizing: border-box;
+    font-family: monospace;
 }
 
 /* Proporcionalidad para pantallas */
@@ -32,6 +52,7 @@ body {
         max-width: 98vw;
         margin-top: 0;
         padding: 0 4px;
+        font-family: monospace;
     }
 }
 @media (min-width: 601px) and (max-width: 1024px) {
@@ -39,6 +60,7 @@ body {
         max-width: 80vw;
         margin-top: 10px;
         padding: 0 8px;
+        font-family: monospace;
     }
 }
 
@@ -64,7 +86,7 @@ body {
 }
 
 h2 {
-    font-family: 'Orbitron', Arial, sans-serif;
+    font-family: 'Orbitron', Arial, sans-serif; /* Título: NO monospace */
     font-size: clamp(16px, 4vw, 30px);
     font-weight: 900;
     color: #fff;
@@ -84,7 +106,7 @@ h2 {
 
 .instrucciones {
     width: 100%;
-    font-family: Arial, serif;
+    font-family: monospace;
     font-size: clamp(15px, 3vw, 22px);
     text-align: justify;
     margin-bottom: clamp(10px, 2vh, 18px);
@@ -96,7 +118,7 @@ h2 {
     padding: 10px;
     border: 3px solid #6495ED;
     border-radius: 12px;
-    font-family: "Courier New", Courier, monospace;
+    font-family: "Courier New", Courier, monospace; /* SOLO caja de texto: monospace tradicional */
     font-size: clamp(15px, 3vw, 22px);
     text-align: left;
     box-sizing: border-box;
@@ -107,12 +129,13 @@ h2 {
 
 .caja-texto:focus { outline: none; border-color: #6495ED; }
 
+/* Spinner grande */
 .spinner {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #6495ED;
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #6495ED;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 80px;
+    height: 80px;
     animation: spin 1s linear infinite;
     margin: 14px auto;
     display: none;
@@ -132,11 +155,12 @@ h2 {
     background-color: #ffebee;
     border-radius: 6px;
     border: 1px solid #ffcdd2;
+    font-family: monospace;
 }
 
 .message-paragraph {
     width: 100%;
-    font-family: Arial, serif;
+    font-family: monospace;
     font-size: clamp(14px, 2vw, 18px);
     color: black;
     text-align: justify;
@@ -147,6 +171,7 @@ h2 {
 .texto-placeholder {
     color: #6495ED;
     font-weight: normal;
+    font-family: monospace;
 }
 
 /* --- Pantalla de resultados - fuentes más grandes (excepto h2 y botón nueva búsqueda) --- */
@@ -161,6 +186,7 @@ h2 {
 .container-resultados .no-codes-message,
 .container-resultados .no-codes-message p {
     font-size: clamp(12px, 2vw, 16px);
+    font-family: monospace;
 }
 
 .codes-list {
@@ -169,6 +195,7 @@ h2 {
     flex-direction: column;
     gap: clamp(3px, 1vw, 10px);
     margin-top: clamp(4px, 1vh, 12px);
+    font-family: monospace;
 }
 
 .code-item {
@@ -181,12 +208,14 @@ h2 {
     border-radius: 8px;
     background-color: #f8f9ff;
     transition: all 0.3s ease;
+    font-family: monospace;
 }
 
 .code-item:hover {
     background-color: #bceeff;
     transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(100, 149, 237, 0.2);
+    font-family: monospace;
 }
 
 .code-info {
@@ -194,26 +223,27 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 2px;
+    font-family: monospace;
 }
 
 .code-number {
-    font-family: Arial, sans-serif;
+    font-family: monospace;
     color: #000;
 }
 
 .code-description {
-    font-family: Arial, serif;
+    font-family: monospace;
     color: #000;
 }
 
-/* --- Cambios: todos los botones con fuente blanca (#fff) --- */
+/* --- Botones con fuente blanca (#fff) y monospace --- */
 .select-button {
     background-color: #6495ED;
-    color: #fff;
+    color: #fff !important;
     border: none;
     padding: clamp(7px, 1vw, 14px) clamp(12px, 3vw, 18px);
     border-radius: 6px;
-    font-family: Verdana, sans-serif;
+    font-family: monospace;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -223,8 +253,9 @@ h2 {
 .select-button:focus,
 .select-button.active {
     background-color: #636b2f;
-    color: #fff;
+    color: #fff !important;
     transform: scale(1.05);
+    font-family: monospace;
 }
 
 /* El item se resalta si el botón está enfocado, activo o en hover */
@@ -235,6 +266,7 @@ h2 {
     background-color: #bceeff;
     box-shadow: 0 2px 8px rgba(100, 149, 237, 0.2);
     transform: translateY(-1px);
+    font-family: monospace;
 }
 
 .action-buttons {
@@ -242,16 +274,17 @@ h2 {
     display: flex;
     justify-content: center;
     margin-top: clamp(12px, 3vh, 28px);
+    font-family: monospace;
 }
 
-/* --- Cambios: todos los botones con fuente blanca (#fff) --- */
+/* --- Botón nueva búsqueda: blanco y monospace --- */
 .new-search-button {
     background-color: #354e7b;
-    color: #fff;
+    color: #fff !important;
     border: none;
     padding: clamp(8px, 2vh, 16px) clamp(16px, 4vw, 24px);
     border-radius: 8px;
-    font-family: Verdana, sans-serif;
+    font-family: monospace;
     font-size: clamp(15px, 3vw, 22px);
     font-weight: bold;
     cursor: pointer;
@@ -262,19 +295,21 @@ h2 {
 
 .new-search-button:hover {
     background-color: #636b2f;
-    color: #fff;
+    color: #fff !important;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(40, 183, 97, 0.3);
+    font-family: monospace;
 }
 .new-search-button:focus {
     background-color: #636b2f;
-    color: #fff;
+    color: #fff !important;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(40, 183, 97, 0.3);
+    font-family: monospace;
 }
 
 .no-codes-message p {
-    font-family: Verdana, sans-serif;
+    font-family: monospace;
     color: #666;
     margin-bottom: clamp(10px, 2vh, 16px);
 }
@@ -286,65 +321,78 @@ h2 {
         margin-bottom: clamp(8px, 3vw, 12px);
         min-width: 80px;
         padding: 8px 8px;
+        font-family: 'Orbitron', Arial, sans-serif;
     }
     .instrucciones {
         font-size: clamp(12px, 3vw, 14px);
         margin-bottom: clamp(6px, 1vw, 10px);
+        font-family: monospace;
     }
     .caja-texto {
         font-size: clamp(13px, 4vw, 14px);
         padding: clamp(5px, 1vw, 8px);
         border-radius: clamp(8px, 3vw, 12px);
+        font-family: "Courier New", Courier, monospace;
     }
     .spinner {
-        width: 28px;
-        height: 28px;
-        border-width: 3px;
+        width: 60px;
+        height: 60px;
+        border-width: 6px;
         margin: clamp(8px, 2vh, 10px) auto;
     }
     .error-message {
         font-size: clamp(11px, 3vw, 13px);
         margin-top: clamp(6px, 1vw, 10px);
+        font-family: monospace;
     }
     .codes-list {
         gap: clamp(2px, 1vw, 6px);
         margin-top: clamp(2px, 1vw, 6px);
+        font-family: monospace;
     }
     .code-item {
         padding: clamp(4px, 1vw, 8px);
+        font-family: monospace;
     }
-    /* --- Cambios: todos los botones con fuente blanca (#fff) --- */
     .select-button {
         font-size: clamp(10px, 4vw, 12px);
         padding: clamp(6px, 1vw, 10px) clamp(10px, 3vw, 12px);
-        color: #fff;
+        color: #fff !important;
+        font-family: monospace;
     }
     .select-button:hover,
     .select-button:focus,
     .select-button.active {
-        color: #fff;
+        color: #fff !important;
+        font-family: monospace;
     }
     .action-buttons {
         margin-top: clamp(10px, 2vw, 16px);
+        font-family: monospace;
     }
     .new-search-button {
         font-size: clamp(12px, 3vw, 14px);
         padding: clamp(7px, 1vw, 10px) clamp(12px, 3vw, 16px);
-        color: #fff;
+        color: #fff !important;
+        font-family: monospace;
     }
     .new-search-button:hover,
     .new-search-button:focus {
-        color: #fff;
+        color: #fff !important;
+        font-family: monospace;
     }
     .no-codes-message {
         margin-top: clamp(8px, 2vw, 14px);
+        font-family: monospace;
     }
     .no-codes-message p {
         font-size: clamp(12px, 3vw, 13px);
         margin-bottom: clamp(8px, 2vw, 12px);
+        font-family: monospace;
     }
     .container-inicial > h2 {
         margin-bottom: clamp(16px, 7vw, 26px);
+        font-family: 'Orbitron', Arial, sans-serif;
     }
 }
 
@@ -355,64 +403,77 @@ h2 {
         margin-bottom: clamp(10px, 2vw, 20px);
         min-width: 100px;
         padding: 10px 12px;
+        font-family: 'Orbitron', Arial, sans-serif;
     }
     .instrucciones {
         font-size: clamp(13px, 2vw, 16px);
         margin-bottom: clamp(8px, 2vw, 14px);
+        font-family: monospace;
     }
     .caja-texto {
         font-size: clamp(14px, 2vw, 16px);
         padding: clamp(7px, 2vw, 10px);
         border-radius: clamp(10px, 2vw, 14px);
+        font-family: "Courier New", Courier, monospace;
     }
     .spinner {
-        width: 34px;
-        height: 34px;
-        border-width: 3px;
+        width: 80px;
+        height: 80px;
+        border-width: 8px;
         margin: clamp(8px, 2vw, 12px) auto;
     }
     .error-message {
         font-size: clamp(12px, 2vw, 14px);
         margin-top: clamp(6px, 2vw, 10px);
+        font-family: monospace;
     }
     .codes-list {
         gap: clamp(3px, 2vw, 8px);
         margin-top: clamp(3px, 2vw, 10px);
+        font-family: monospace;
     }
     .code-item {
         padding: clamp(5px, 2vw, 10px);
+        font-family: monospace;
     }
-    /* --- Cambios: todos los botones con fuente blanca (#fff) --- */
     .select-button {
         font-size: clamp(11px, 3vw, 13px);
         padding: clamp(7px, 2vw, 12px) clamp(12px, 4vw, 14px);
-        color: #fff;
+        color: #fff !important;
+        font-family: monospace;
     }
     .select-button:hover,
     .select-button:focus,
     .select-button.active {
-        color: #fff;
+        color: #fff !important;
+        font-family: monospace;
     }
     .action-buttons {
         margin-top: clamp(12px, 2vw, 18px);
+        font-family: monospace;
     }
     .new-search-button {
         font-size: clamp(13px, 2vw, 16px);
         padding: clamp(9px, 2vw, 12px) clamp(14px, 3vw, 18px);
-        color: #fff;
+        color: #fff !important;
+        font-family: monospace;
     }
     .new-search-button:hover,
     .new-search-button:focus {
-        color: #fff;
+        color: #fff !important;
+        font-family: monospace;
     }
     .no-codes-message {
         margin-top: clamp(12px, 2vw, 18px);
+        font-family: monospace;
     }
     .no-codes-message p {
         font-size: clamp(12px, 2vw, 14px);
         margin-bottom: clamp(10px, 2vw, 14px);
+        font-family: monospace;
     }
     .container-inicial > h2 {
         margin-bottom: clamp(32px, 10vw, 72px);
+        font-family: 'Orbitron', Arial, sans-serif;
     }
 }
