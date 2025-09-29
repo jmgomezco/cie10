@@ -125,7 +125,7 @@ h2 {
     text-align: left;
     box-sizing: border-box;
     align-self: flex-start;
-    color: #646464;
+    color: #292929;
     background-color: #fff;
 }
 
@@ -213,11 +213,21 @@ h2 {
     font-family: monospace;
 }
 
-.code-item:hover {
+/* Solo el primer item tiene fondo especial */
+.code-item.selected {
     background-color: #bceeff;
-    transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(100, 149, 237, 0.2);
+    transform: translateY(-1px);
     font-family: monospace;
+}
+
+/* Elimina fondo especial en hover/focus en otros items */
+.code-item:has(.select-button:focus),
+.code-item:has(.select-button.active),
+.code-item:has(.select-button:hover) {
+    background-color: initial;
+    box-shadow: none;
+    transform: none;
 }
 
 .code-info {
@@ -257,17 +267,6 @@ h2 {
     background-color: #317f43 !important;
     color: #fff !important;
     transform: scale(1.05);
-    font-family: monospace;
-}
-
-/* El item se resalta si el botón está enfocado, activo o en hover */
-.code-item.selected,
-.code-item:has(.select-button:focus),
-.code-item:has(.select-button.active),
-.code-item:has(.select-button:hover) {
-    background-color: #bceeff;
-    box-shadow: 0 2px 8px rgba(100, 149, 237, 0.2);
-    transform: translateY(-1px);
     font-family: monospace;
 }
 
