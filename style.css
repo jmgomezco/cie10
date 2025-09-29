@@ -106,17 +106,16 @@ h2 {
 }
 
 /* --- Instrucciones: Verdana y tamaño intermedio --- */
-/* CAMBIO: aumentada la distancia vertical debajo de instrucciones */
 .instrucciones {
     width: 100%;
     font-family: Verdana, Geneva, sans-serif;
     font-size: clamp(14px, 2vw, 18px);
     text-align: justify;
-    margin-bottom: clamp(28px, 5vw, 36px); /* <-- antes 10px, ahora más separada */
+    margin-bottom: clamp(28px, 5vw, 36px); /* más separada */
     align-self: flex-start;
 }
 
-/* CAMBIO: aumentada la distancia vertical debajo de la caja de texto */
+/* Caja de texto con más espacio abajo */
 .caja-texto {
     width: 100%;
     padding: 10px;
@@ -129,7 +128,7 @@ h2 {
     align-self: flex-start;
     color: #292929;
     background-color: #fff;
-    margin-bottom: clamp(26px, 5vw, 38px); /* <-- antes 0px, ahora más espacio abajo */
+    margin-bottom: clamp(26px, 5vw, 38px); /* más espacio abajo */
 }
 
 .caja-texto:focus { outline: none; border-color: #6495ED; }
@@ -255,28 +254,6 @@ h2 {
     color: #000;
 }
 
-/* --- Botones selección: fuente blanca y fondo verde al enfocar --- */
-.select-button {
-    background-color: #6495ED;
-    color: #fff !important;
-    border: none;
-    padding: clamp(7px, 1vw, 14px) clamp(12px, 3vw, 18px);
-    border-radius: 6px;
-    font-family: monospace;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-}
-.select-button:hover,
-.select-button:focus,
-.select-button.active {
-    background-color: #317f43 !important;
-    color: #fff !important;
-    transform: scale(1.05);
-    font-family: monospace;
-}
-
 .action-buttons {
     width: 100%;
     display: flex;
@@ -326,7 +303,7 @@ h2 {
     }
     .instrucciones {
         font-size: clamp(14px, 2vw, 17px);
-        margin-bottom: clamp(28px, 7vw, 36px); /* <-- también aumentado en móvil */
+        margin-bottom: clamp(28px, 7vw, 36px); /* más separación móvil */
         font-family: Verdana, Geneva, sans-serif;
     }
     .caja-texto {
@@ -334,7 +311,7 @@ h2 {
         padding: clamp(5px, 1vw, 8px);
         border-radius: clamp(8px, 3vw, 12px);
         font-family: "Courier New", Courier, monospace;
-        margin-bottom: clamp(26px, 7vw, 38px); /* <-- también aumentado en móvil */
+        margin-bottom: clamp(26px, 7vw, 38px); /* más espacio móvil */
     }
     .spinner {
         width: 60px;
@@ -360,13 +337,6 @@ h2 {
         font-size: clamp(10px, 4vw, 12px);
         padding: clamp(6px, 1vw, 10px) clamp(10px, 3vw, 12px);
         color: #fff !important;
-        font-family: monospace;
-    }
-    .select-button:hover,
-    .select-button:focus,
-    .select-button.active {
-        color: #fff !important;
-        background-color: #317f43 !important;
         font-family: monospace;
     }
     .action-buttons {
@@ -412,7 +382,7 @@ h2 {
     }
     .instrucciones {
         font-size: clamp(14px, 2vw, 18px);
-        margin-bottom: clamp(28px, 7vw, 36px); /* <-- también aumentado portátil */
+        margin-bottom: clamp(28px, 7vw, 36px); /* más separación portátil */
         font-family: Verdana, Geneva, sans-serif;
     }
     .caja-texto {
@@ -420,7 +390,7 @@ h2 {
         padding: clamp(7px, 2vw, 10px);
         border-radius: clamp(10px, 2vw, 14px);
         font-family: "Courier New", Courier, monospace;
-        margin-bottom: clamp(26px, 7vw, 38px); /* <-- también aumentado portátil */
+        margin-bottom: clamp(26px, 7vw, 38px); /* más espacio portátil */
     }
     .spinner {
         width: 80px;
@@ -446,13 +416,6 @@ h2 {
         font-size: clamp(11px, 3vw, 13px);
         padding: clamp(7px, 2vw, 12px) clamp(12px, 4vw, 14px);
         color: #fff !important;
-        font-family: monospace;
-    }
-    .select-button:hover,
-    .select-button:focus,
-    .select-button.active {
-        color: #fff !important;
-        background-color: #317f43 !important;
         font-family: monospace;
     }
     .action-buttons {
