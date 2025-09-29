@@ -19,10 +19,10 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #00913f;
+    background: #636b2f;
     padding: 1.5em 2.5em;
     border-radius: 10px;
-    font-size: clamp(1.4em, 4vw, 2.2em);
+    font-size: clamp(15px, 3vw, 22px); /* Igual que .select-button */
     box-shadow: 0 2px 16px rgba(0,0,0,0.23);
     z-index: 9999;
     text-align: center;
@@ -30,7 +30,9 @@ body {
     opacity: 1;
     transition: opacity 0.5s;
     font-family: monospace;
+    font-weight: bold; /* Igual que .select-button */
 }
+
 
 /* --- Contenedores principales --- */
 .container-inicial, .container-resultados {
@@ -253,7 +255,7 @@ h2 {
 .select-button:hover,
 .select-button:focus,
 .select-button.active {
-    background-color: #00913f;
+    background-color: #00cc4cf;
     color: #fff !important;
     transform: scale(1.05);
     font-family: monospace;
@@ -295,14 +297,14 @@ h2 {
 }
 
 .new-search-button:hover {
-    background-color: #00913f;
+    background-color: #00cc4cf;
     color: #fff !important;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(40, 183, 97, 0.3);
     font-family: monospace;
 }
 .new-search-button:focus {
-    background-color: #00913f;
+    background-color: #00cc4cf;
     color: #fff !important;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(40, 183, 97, 0.3);
