@@ -85,7 +85,7 @@ h2 {
 .instrucciones {
     width: 100%;
     font-family: Arial, serif;
-    font-size: clamp(13px, 2vw, 18px);
+font-size: clamp(15px, 3vw, 22px);
     text-align: justify;
     margin-bottom: clamp(10px, 2vh, 18px);
     align-self: flex-start;
@@ -246,7 +246,7 @@ h2 {
     padding: clamp(8px, 2vh, 16px) clamp(16px, 4vw, 24px);
     border-radius: 8px;
     font-family: Verdana, sans-serif;
-    font-size: clamp(13px, 2vw, 18px);
+font-size: clamp(15px, 3vw, 22px);
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
