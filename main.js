@@ -46,38 +46,47 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function renderCodes(codes) {
-        resultSectionCodesList.innerHTML = "";
-        if (!codes || codes.length === 0) {
-            noCodesMsg.style.display = "block";
-            return;
-        }
-        noCodesMsg.style.display = "none";
-        codes.forEach(code => {
-            const codeItem = document.createElement("div");
-            codeItem.className = "code-item";
-            const info = document.createElement("div");
-            info.className = "code-info";
-            const number = document.createElement("div");
-            number.className = "code-number";
-            number.textContent = code.codigo || code.code || "";
-            const desc = document.createElement("div");
-            desc.className = "code-description";
-            desc.textContent = code.desc || code.descripcion || code.description || "";
-            info.appendChild(number);
-            info.appendChild(desc);
-
-            const btn = document.createElement("button");
-            btn.className = "select-button";
-            btn.textContent = "Elegir";
-            btn.onclick = function () {
-                seleccionarCodigo(code);
-            };
-
-            codeItem.appendChild(info);
-            codeItem.appendChild(btn);
-            resultSectionCodesList.appendChild(codeItem);
-        });
+    resultSectionCodesList.innerHTML = "";
+    if (!codes || codes.length === 0) {
+        noCodesMsg.style.display = "block";
+        return;
     }
+    noCodesMsg.style.display = "none";
+    codes.forEach((code, idx) => {
+        const codeItem = document.createElement("div");
+        codeItem.className = "code-item";
+        const info = document.createElement("div");
+        info.className = "code-info";
+        const number = document.createElement("div");
+        number.className = "code-number";
+        number.textContent = code.codigo || code.code || "";
+        const desc = document.createElement("div");
+        desc.className = "code-description";
+        desc.textContent = code.desc || code.descripcion || code.description || "";
+        info.appendChild(number);
+        info.appendChild(desc);
+
+        const btn = document.createElement("button");
+        btn.className = "select-button";
+        btn.textContent = "Elegir";
+        btn.onclick = function () {
+            seleccionarCodigo(code);
+        };
+
+        codeItem.appendChild(info);
+        codeItem.appendChild(btn);
+        resultSectionCodesList.appendChild(codeItem);
+
+        // --- Nueva función: foco en el primer botón al renderizar ---
+        if (idx === 0) {
+            // Espera a que el botón esté en el DOM antes de hacer focus
+            setTimeout(() => {
+                btn.focus();
+            }, 0);
+        }
+    });
+}
+    
     // Función para mostrar toast emergente de éxito
 
     function showSuccessToast(message) {
