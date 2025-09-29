@@ -33,59 +33,60 @@ document.addEventListener("DOMContentLoaded", function () {
         spinner.style.display = "none";
     }
 
-    // Renderiza los códigos y aplica gestión de activo por foco/hover
     function renderCodes(codes) {
-        resultSectionCodesList.innerHTML = "";
-        if (!codes || codes.length === 0) {
-            noCodesMsg.style.display = "block";
-            return;
-        }
-        noCodesMsg.style.display = "none";
-
-        codes.forEach((code) => {
-            const codeItem = document.createElement("div");
-            codeItem.className = "code-item";
-
-            const info = document.createElement("div");
-            info.className = "code-info";
-            const number = document.createElement("div");
-            number.className = "code-number";
-            number.textContent = code.codigo || code.code || "";
-            const desc = document.createElement("div");
-            desc.className = "code-description";
-            desc.textContent = code.desc || code.descripcion || code.description || "";
-            info.appendChild(number);
-            info.appendChild(desc);
-
-            const btn = document.createElement("button");
-            btn.className = "select-button";
-            btn.textContent = "Elegir";
-            btn.onclick = function () {
-                seleccionarCodigo(code);
-            };
-
-            // Solo un item activo a la vez (foco/hover)
-            btn.addEventListener("focus", () => {
-                document.querySelectorAll(".code-item.activo").forEach(el => el.classList.remove("activo"));
-                codeItem.classList.add("activo");
-            });
-            btn.addEventListener("mouseenter", () => {
-                document.querySelectorAll(".code-item.activo").forEach(el => el.classList.remove("activo"));
-                codeItem.classList.add("activo");
-            });
-            btn.addEventListener("blur", () => {
-                codeItem.classList.remove("activo");
-            });
-            btn.addEventListener("mouseleave", () => {
-                codeItem.classList.remove("activo");
-            });
-
-            codeItem.appendChild(info);
-            codeItem.appendChild(btn);
-            resultSectionCodesList.appendChild(codeItem);
-        });
+    resultSectionCodesList.innerHTML = "";
+    if (!codes || codes.length === 0) {
+        noCodesMsg.style.display = "block";
+        return;
     }
+    noCodesMsg.style.display = "none";
 
+    codes.forEach((code) => {
+        const codeItem = document.createElement("div");
+        codeItem.className = "code-item";
+
+        const info = document.createElement("div");
+        info.className = "code-info";
+        const number = document.createElement("div");
+        number.className = "code-number";
+        number.textContent = code.codigo || code.code || "";
+        const desc = document.createElement("div");
+        desc.className = "code-description";
+        desc.textContent = code.desc || code.descripcion || code.description || "";
+        info.appendChild(number);
+        info.appendChild(desc);
+
+        const btn = document.createElement("button");
+        btn.className = "select-button";
+        btn.textContent = "Elegir";
+        btn.onclick = function () {
+            seleccionarCodigo(code);
+        };
+
+        // Solo uno activo: foco o hover
+        btn.addEventListener("focus", () => {
+            document.querySelectorAll(".code-item.activo").forEach(el => el.classList.remove("activo"));
+            codeItem.classList.add("activo");
+        });
+        btn.addEventListener("mouseenter", () => {
+            document.querySelectorAll(".code-item.activo").forEach(el => el.classList.remove("activo"));
+            codeItem.classList.add("activo");
+        });
+        btn.addEventListener("blur", () => {
+            codeItem.classList.remove("activo");
+        });
+        btn.addEventListener("mouseleave", () => {
+            codeItem.classList.remove("activo");
+        });
+
+        codeItem.appendChild(info);
+        codeItem.appendChild(btn);
+        resultSectionCodesList.appendChild(codeItem);
+    });
+}
+
+    
+ 
     async function seleccionarCodigo(code) {
         showSpinner();
         try {
