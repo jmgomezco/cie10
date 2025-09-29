@@ -53,10 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     noCodesMsg.style.display = "none";
 
-    // Variable para guardar el último code-item activo
-    let lastActiveItem = null;
-
-    codes.forEach((code, idx) => {
+    codes.forEach((code) => {
         const codeItem = document.createElement("div");
         codeItem.className = "code-item";
 
@@ -78,48 +75,30 @@ document.addEventListener("DOMContentLoaded", function () {
             seleccionarCodigo(code);
         };
 
-        // Función para activar el item y desactivar el anterior
-        function setActiveItem() {
-            if (lastActiveItem) lastActiveItem.classList.remove("activo");
+        // Solo uno activo: foco o hover
+        btn.addEventListener("focus", () => {
+            document.querySelectorAll(".code-item.activo").forEach(el => el.classList.remove("activo"));
             codeItem.classList.add("activo");
-            lastActiveItem = codeItem;
-        }
-
-        // Evento para gestionar focus (teclado/tabulador)
-        btn.addEventListener("focus", setActiveItem);
-
-        // Evento para gestionar hover (ratón)
-        btn.addEventListener("mouseenter", setActiveItem);
-
-        // Cuando sale el ratón, sólo quitamos el activo si no hay foco dentro
-        btn.addEventListener("mouseleave", () => {
-            // Si el botón no tiene el foco, se quita el activo
-            if (document.activeElement !== btn) {
-                codeItem.classList.remove("activo");
-                if (lastActiveItem === codeItem) lastActiveItem = null;
-            }
         });
-
-        // Cuando pierde el foco (blur), sólo quitamos el activo si no hay hover del ratón
+        btn.addEventListener("mouseenter", () => {
+            document.querySelectorAll(".code-item.activo").forEach(el => el.classList.remove("activo"));
+            codeItem.classList.add("activo");
+        });
         btn.addEventListener("blur", () => {
-            // Si no está el ratón sobre el botón, quitamos activo
-            if (!btn.matches(':hover')) {
-                codeItem.classList.remove("activo");
-                if (lastActiveItem === codeItem) lastActiveItem = null;
-            }
+            codeItem.classList.remove("activo");
+        });
+        btn.addEventListener("mouseleave", () => {
+            codeItem.classList.remove("activo");
         });
 
         codeItem.appendChild(info);
         codeItem.appendChild(btn);
         resultSectionCodesList.appendChild(codeItem);
-        // No se pone el foco inicial en ningún botón.
     });
 }
     
-
-       
-     // Función para mostrar toast emergente de éxito
-    function showSuccessToast(message) {
+    
+    showSuccessToast(message) {
         let toast = document.getElementById('success-toast');
         if (!toast) {
             toast = document.createElement('div');
