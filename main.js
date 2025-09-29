@@ -53,6 +53,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     noCodesMsg.style.display = "none";
 
+    // Variable para guardar el último code-item activo
+    let lastActiveItem = null;
+
     codes.forEach((code, idx) => {
         const codeItem = document.createElement("div");
         codeItem.className = "code-item";
@@ -75,27 +78,35 @@ document.addEventListener("DOMContentLoaded", function () {
             seleccionarCodigo(code);
         };
 
-        // Evento para gestionar focus (teclado/tabulador)
-        btn.addEventListener("focus", () => {
-            // Quitar estado activo de todos los code-items
-            document.querySelectorAll(".code-item.activo").forEach(el => el.classList.remove("activo"));
+        // Función para activar el item y desactivar el anterior
+        function setActiveItem() {
+            if (lastActiveItem) lastActiveItem.classList.remove("activo");
             codeItem.classList.add("activo");
-        });
+            lastActiveItem = codeItem;
+        }
+
+        // Evento para gestionar focus (teclado/tabulador)
+        btn.addEventListener("focus", setActiveItem);
 
         // Evento para gestionar hover (ratón)
-        btn.addEventListener("mouseenter", () => {
-            document.querySelectorAll(".code-item.activo").forEach(el => el.classList.remove("activo"));
-            codeItem.classList.add("activo");
-        });
+        btn.addEventListener("mouseenter", setActiveItem);
 
-        // Quitar el estado activo cuando el botón pierde foco (por teclado)
-        btn.addEventListener("blur", () => {
-            codeItem.classList.remove("activo");
-        });
-
-        // Quitar el estado activo cuando el ratón sale del botón
+        // Cuando sale el ratón, sólo quitamos el activo si no hay foco dentro
         btn.addEventListener("mouseleave", () => {
-            codeItem.classList.remove("activo");
+            // Si el botón no tiene el foco, se quita el activo
+            if (document.activeElement !== btn) {
+                codeItem.classList.remove("activo");
+                if (lastActiveItem === codeItem) lastActiveItem = null;
+            }
+        });
+
+        // Cuando pierde el foco (blur), sólo quitamos el activo si no hay hover del ratón
+        btn.addEventListener("blur", () => {
+            // Si no está el ratón sobre el botón, quitamos activo
+            if (!btn.matches(':hover')) {
+                codeItem.classList.remove("activo");
+                if (lastActiveItem === codeItem) lastActiveItem = null;
+            }
         });
 
         codeItem.appendChild(info);
@@ -104,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // No se pone el foco inicial en ningún botón.
     });
 }
+    
 
        
      // Función para mostrar toast emergente de éxito
