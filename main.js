@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 history.replaceState(null, "", "/");
                 window.close();
             }, 500);
-        }, 1500); // 1,5 segundos visible
+        }, 2000); // 2 segundos visible
     }
 
     async function seleccionarCodigo(code) {
