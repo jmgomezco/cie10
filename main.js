@@ -56,8 +56,6 @@ document.addEventListener("DOMContentLoaded", function () {
     codes.forEach((code, idx) => {
         const codeItem = document.createElement("div");
         codeItem.className = "code-item";
-        // Se elimina la clase "selected" en el primer item
-        // if (idx === 0) codeItem.classList.add("selected");
 
         const info = document.createElement("div");
         info.className = "code-info";
@@ -81,17 +79,12 @@ document.addEventListener("DOMContentLoaded", function () {
         codeItem.appendChild(btn);
         resultSectionCodesList.appendChild(codeItem);
 
-        // El foco sigue en el primer botón para accesibilidad
-        if (idx === 0) {
-            setTimeout(() => {
-                btn.focus();
-            }, 0);
-        }
+        // NO se pone el foco inicial en ningún botón.
     });
 }
+    
 
-
-
+    
      // Función para mostrar toast emergente de éxito
     function showSuccessToast(message) {
         let toast = document.getElementById('success-toast');
