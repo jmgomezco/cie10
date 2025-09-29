@@ -12,14 +12,14 @@ body {
     overflow-x: hidden;
 }
 
-/* --- Toast de éxito --- */
 
+/* --- Toast de éxito --- */
 #success-toast {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #636b2f;
+    background: #00cc4c;
     padding: 1.5em 2.5em;
     border-radius: 10px;
     font-size: clamp(15px, 3vw, 22px); /* Igual que .select-button */
@@ -30,7 +30,7 @@ body {
     opacity: 1;
     transition: opacity 0.5s;
     font-family: monospace;
-    font-weight: bold; /* Igual que .select-button */
+    font-weight: bold;
 }
 
 
@@ -255,11 +255,12 @@ h2 {
 .select-button:hover,
 .select-button:focus,
 .select-button.active {
-    background-color: #00cc4cf;
+    background-color: #00cc4c !important;
     color: #fff !important;
     transform: scale(1.05);
     font-family: monospace;
 }
+
 
 /* El item se resalta si el botón está enfocado, activo o en hover */
 .code-item.selected,
