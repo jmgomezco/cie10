@@ -107,7 +107,7 @@ h2 {
 .instrucciones {
     width: 100%;
     font-family: Verdana, Geneva, sans-serif;
-    font-size: clamp(12px, 2vw, 15px);
+    font-size: clamp(14px, 2vw, 18px);
     text-align: justify;
     margin-bottom: clamp(10px, 2vh, 18px);
     align-self: flex-start;
