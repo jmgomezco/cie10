@@ -45,87 +45,87 @@ document.addEventListener("DOMContentLoaded", function () {
         spinner.style.display = "none";
     }
 
+    // Renderiza los códigos y selecciona el primero
     function renderCodes(codes) {
-    resultSectionCodesList.innerHTML = "";
-    if (!codes || codes.length === 0) {
-        noCodesMsg.style.display = "block";
-        return;
-    }
-    noCodesMsg.style.display = "none";
-    codes.forEach((code, idx) => {
-        const codeItem = document.createElement("div");
-        codeItem.className = "code-item";
-        const info = document.createElement("div");
-        info.className = "code-info";
-        const number = document.createElement("div");
-        number.className = "code-number";
-        number.textContent = code.codigo || code.code || "";
-        const desc = document.createElement("div");
-        desc.className = "code-description";
-        desc.textContent = code.desc || code.descripcion || code.description || "";
-        info.appendChild(number);
-        info.appendChild(desc);
-
-        const btn = document.createElement("button");
-        btn.className = "select-button";
-        btn.textContent = "Elegir";
-        btn.onclick = function () {
-            seleccionarCodigo(code);
-        };
-
-        codeItem.appendChild(info);
-        codeItem.appendChild(btn);
-        resultSectionCodesList.appendChild(codeItem);
-
-        // --- Nueva función: foco en el primer botón al renderizar ---
-        if (idx === 0) {
-            // Espera a que el botón esté en el DOM antes de hacer focus
-            setTimeout(() => {
-                btn.focus();
-            }, 0);
+        resultSectionCodesList.innerHTML = "";
+        if (!codes || codes.length === 0) {
+            noCodesMsg.style.display = "block";
+            return;
         }
-    });
-}
-    
-    // Función para mostrar toast emergente de éxito
+        noCodesMsg.style.display = "none";
+        codes.forEach((code, idx) => {
+            const codeItem = document.createElement("div");
+            codeItem.className = "code-item";
+            if (idx === 0) codeItem.classList.add("selected"); // SOLO el primer item recibe el fondo especial
 
-    function showSuccessToast(message) {
-    let toast = document.getElementById('success-toast');
-    if (!toast) {
-        toast = document.createElement('div');
-        toast.id = 'success-toast';
-        document.body.appendChild(toast);
+            const info = document.createElement("div");
+            info.className = "code-info";
+            const number = document.createElement("div");
+            number.className = "code-number";
+            number.textContent = code.codigo || code.code || "";
+            const desc = document.createElement("div");
+            desc.className = "code-description";
+            desc.textContent = code.desc || code.descripcion || code.description || "";
+            info.appendChild(number);
+            info.appendChild(desc);
+
+            const btn = document.createElement("button");
+            btn.className = "select-button";
+            btn.textContent = "Elegir";
+            btn.onclick = function () {
+                seleccionarCodigo(code);
+            };
+
+            codeItem.appendChild(info);
+            codeItem.appendChild(btn);
+            resultSectionCodesList.appendChild(codeItem);
+
+            // Foco en el primer botón
+            if (idx === 0) {
+                setTimeout(() => {
+                    btn.focus();
+                }, 0);
+            }
+        });
     }
-    toast.innerText = message;
 
-    // Estilos amigables, centrado, verde #00cc4c
-    toast.style.position = 'fixed';
-    toast.style.top = '50%';
-    toast.style.left = '50%';
-    toast.style.transform = 'translate(-50%, -50%)';
-    toast.style.background = '#317f43';
-    toast.style.padding = '1.5em 2.5em';
-    toast.style.borderRadius = '10px';
-    toast.style.fontSize = 'clamp(15px, 3vw, 22px)';
-    toast.style.boxShadow = '0 2px 8px rgba(0,0,0,0.23)';
-    toast.style.zIndex = 9999;
-    toast.style.textAlign = 'center';
-    toast.style.color = '#fff';
-    toast.style.opacity = 1;
-    toast.style.fontFamily = 'monospace';
-    toast.style.fontWeight = 'bold';
-    toast.style.transition = 'opacity 0.5s';
+    // Función para mostrar toast emergente de éxito
+    function showSuccessToast(message) {
+        let toast = document.getElementById('success-toast');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.id = 'success-toast';
+            document.body.appendChild(toast);
+        }
+        toast.innerText = message;
 
-    setTimeout(() => {
-        toast.style.opacity = 0;
+        // Estilos amigables, centrado, verde #317f43
+        toast.style.position = 'fixed';
+        toast.style.top = '50%';
+        toast.style.left = '50%';
+        toast.style.transform = 'translate(-50%, -50%)';
+        toast.style.background = '#317f43';
+        toast.style.padding = '1.5em 2.5em';
+        toast.style.borderRadius = '10px';
+        toast.style.fontSize = 'clamp(15px, 3vw, 22px)';
+        toast.style.boxShadow = '0 2px 8px rgba(0,0,0,0.23)';
+        toast.style.zIndex = 9999;
+        toast.style.textAlign = 'center';
+        toast.style.color = '#fff';
+        toast.style.opacity = 1;
+        toast.style.fontFamily = 'monospace';
+        toast.style.fontWeight = 'bold';
+        toast.style.transition = 'opacity 0.5s';
+
         setTimeout(() => {
-            toast.remove();
-            // Redirige y limpia el historial
-            history.replaceState(null, "", "/");
-            window.close();
-        }, 500);
-    }, 2000); // 2 segundos visible
-}
+            toast.style.opacity = 0;
+            setTimeout(() => {
+                toast.remove();
+                history.replaceState(null, "", "/");
+                window.close(); // Solo funciona si la ventana fue abierta por JS
+            }, 500);
+        }, 2000); // 2 segundos visible
+    }
 
     async function seleccionarCodigo(code) {
         showSpinner();
@@ -186,7 +186,6 @@ document.addEventListener("DOMContentLoaded", function () {
             containerResultados.style.display = "flex";
             history.replaceState(null, "", "/");
             textoPlaceholder.textContent = texto;
-            // Cambio aquí: acepta también candidatos_gpt
             renderCodes(data.codigos || data.codes || data.candidatos_gpt || []);
             currentsessionId = data.sessionId || null;
         } catch (err) {
