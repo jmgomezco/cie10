@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Bloquear scroll en toda la página (pantalla fija)
-    document.body.style.overflow = 'hidden';
-
     // Elementos de la pantalla inicial
     const containerInicial = document.getElementById("container-inicial");
     const input = document.getElementById("textoInput");
@@ -15,17 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const newSearchBtn = document.getElementById("new-search-btn");
     const noCodesMsg = document.getElementById("no-codes-message");
 
-    // NUEVO: almacenar sessionId para usarlo en /select
     let currentsessionId = null;
-
-    // Quita la barra final para evitar doble barra en las rutas
     const API_BASE = "https://ffljaqyibd.execute-api.us-east-1.amazonaws.com";
-
-    if ("visualViewport" in window) {
-        window.visualViewport.addEventListener("resize", () => {
-            input.scrollIntoView({ behavior: "smooth", block: "center" });
-        });
-    }
 
     function showError(message) {
         error.textContent = message;
@@ -45,60 +33,85 @@ document.addEventListener("DOMContentLoaded", function () {
         spinner.style.display = "none";
     }
 
+    // Renderiza los códigos y aplica gestión de activo por foco/hover
     function renderCodes(codes) {
-    resultSectionCodesList.innerHTML = "";
-    if (!codes || codes.length === 0) {
-        noCodesMsg.style.display = "block";
-        return;
+        resultSectionCodesList.innerHTML = "";
+        if (!codes || codes.length === 0) {
+            noCodesMsg.style.display = "block";
+            return;
+        }
+        noCodesMsg.style.display = "none";
+
+        codes.forEach((code) => {
+            const codeItem = document.createElement("div");
+            codeItem.className = "code-item";
+
+            const info = document.createElement("div");
+            info.className = "code-info";
+            const number = document.createElement("div");
+            number.className = "code-number";
+            number.textContent = code.codigo || code.code || "";
+            const desc = document.createElement("div");
+            desc.className = "code-description";
+            desc.textContent = code.desc || code.descripcion || code.description || "";
+            info.appendChild(number);
+            info.appendChild(desc);
+
+            const btn = document.createElement("button");
+            btn.className = "select-button";
+            btn.textContent = "Elegir";
+            btn.onclick = function () {
+                seleccionarCodigo(code);
+            };
+
+            // Solo un item activo a la vez (foco/hover)
+            btn.addEventListener("focus", () => {
+                document.querySelectorAll(".code-item.activo").forEach(el => el.classList.remove("activo"));
+                codeItem.classList.add("activo");
+            });
+            btn.addEventListener("mouseenter", () => {
+                document.querySelectorAll(".code-item.activo").forEach(el => el.classList.remove("activo"));
+                codeItem.classList.add("activo");
+            });
+            btn.addEventListener("blur", () => {
+                codeItem.classList.remove("activo");
+            });
+            btn.addEventListener("mouseleave", () => {
+                codeItem.classList.remove("activo");
+            });
+
+            codeItem.appendChild(info);
+            codeItem.appendChild(btn);
+            resultSectionCodesList.appendChild(codeItem);
+        });
     }
-    noCodesMsg.style.display = "none";
 
-    codes.forEach((code) => {
-        const codeItem = document.createElement("div");
-        codeItem.className = "code-item";
+    async function seleccionarCodigo(code) {
+        showSpinner();
+        try {
+            const res = await fetch(API_BASE + "/select", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    sessionId: currentsessionId,
+                    codigo: code.codigo || code.code,
+                    desc: code.desc || code.descripcion || code.description || ""
+                })
+            });
+            hideSpinner();
+            const data = await res.json();
+            if (data && data.ok) {
+                showSuccessToast("Se grabó con éxito su elección");
+            } else {
+                showError("No se pudo registrar la selección.");
+            }
+        } catch {
+            hideSpinner();
+            showError("Error al conectar con el servidor.");
+        }
+    }
 
-        const info = document.createElement("div");
-        info.className = "code-info";
-        const number = document.createElement("div");
-        number.className = "code-number";
-        number.textContent = code.codigo || code.code || "";
-        const desc = document.createElement("div");
-        desc.className = "code-description";
-        desc.textContent = code.desc || code.descripcion || code.description || "";
-        info.appendChild(number);
-        info.appendChild(desc);
-
-        const btn = document.createElement("button");
-        btn.className = "select-button";
-        btn.textContent = "Elegir";
-        btn.onclick = function () {
-            seleccionarCodigo(code);
-        };
-
-        // Solo uno activo: foco o hover
-        btn.addEventListener("focus", () => {
-            document.querySelectorAll(".code-item.activo").forEach(el => el.classList.remove("activo"));
-            codeItem.classList.add("activo");
-        });
-        btn.addEventListener("mouseenter", () => {
-            document.querySelectorAll(".code-item.activo").forEach(el => el.classList.remove("activo"));
-            codeItem.classList.add("activo");
-        });
-        btn.addEventListener("blur", () => {
-            codeItem.classList.remove("activo");
-        });
-        btn.addEventListener("mouseleave", () => {
-            codeItem.classList.remove("activo");
-        });
-
-        codeItem.appendChild(info);
-        codeItem.appendChild(btn);
-        resultSectionCodesList.appendChild(codeItem);
-    });
-}
-    
-    
-    showSuccessToast(message) {
+    function showSuccessToast(message) {
         let toast = document.getElementById('success-toast');
         if (!toast) {
             toast = document.createElement('div');
@@ -106,8 +119,6 @@ document.addEventListener("DOMContentLoaded", function () {
             document.body.appendChild(toast);
         }
         toast.innerText = message;
-
-        // Estilos amigables, centrado, verde #317f43
         toast.style.position = 'fixed';
         toast.style.top = '50%';
         toast.style.left = '50%';
@@ -130,42 +141,11 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(() => {
                 toast.remove();
                 history.replaceState(null, "", "/");
-                window.close(); // Solo funciona si la ventana fue abierta por JS
             }, 500);
-        }, 2000); // 2 segundos visible
+        }, 2000);
     }
 
-    async function seleccionarCodigo(code) {
-        showSpinner();
-        try {
-            const res = await fetch(API_BASE + "/select", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    sessionId: currentsessionId,
-                    codigo: code.codigo || code.code,
-                    desc: code.desc || code.descripcion || code.description || ""
-                })
-            });
-            hideSpinner();
-            const data = await res.json();
-            if (data && data.ok) {
-                showSuccessToast("Se grabó con éxito su elección");
-                // La redirección se maneja dentro de showSuccessToast
-            } else {
-                showError("No se pudo registrar la selección.");
-            }
-        } catch {
-            hideSpinner();
-            showError("Error al conectar con el servidor.");
-        }
-    }
-
-    input.addEventListener("input", () => {
-        if (input.value.trim()) hideMessages();
-    });
-
-    // Usamos keydown, pero solo actúa si hay texto no vacío
+    // Entrada principal: Intro en caja texto
     input.addEventListener("keydown", async (e) => {
         if (e.key !== "Enter") return;
         e.preventDefault();
@@ -182,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const res = await fetch(API_BASE + "/texto", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ texto }) // <- SIEMPRE "texto"
+                body: JSON.stringify({ texto })
             });
             hideSpinner();
             if (!res.ok) {
@@ -202,6 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Nuevo intento
     newSearchBtn.addEventListener("click", () => {
         containerInicial.style.display = "flex";
         containerResultados.style.display = "none";
@@ -214,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 100);
     });
 
-    // Inicializar
+    // Inicialización
     hideMessages();
     containerInicial.style.display = "flex";
     containerResultados.style.display = "none";
