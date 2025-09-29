@@ -221,17 +221,20 @@ h2 {
     background-color: #bceeff;
     box-shadow: 0 2px 8px rgba(100, 149, 237, 0.2);
     transform: translateY(-1px);
-    font-family: monospace;
 }
 
-/* El botón muestra el color verde solo si está en hover, focus o active */
-.select-button:hover,
-.select-button:focus,
-.select-button.active {
-    background-color: #317f43 !important;
+/* El botón siempre azul */
+.select-button {
+    background-color: #6495ED;
     color: #fff !important;
-    transform: scale(1.05);
+    border: none;
+    padding: clamp(7px, 1vw, 14px) clamp(12px, 3vw, 18px);
+    border-radius: 6px;
     font-family: monospace;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .code-info {
